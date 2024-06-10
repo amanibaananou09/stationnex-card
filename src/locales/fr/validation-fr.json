@@ -1,0 +1,79 @@
+{
+  "name": {
+    "min": "Le nom doit comporter au moins 1 caractères",
+    "required": "Le nom est requis"
+  },
+  "firstName": {
+    "min": "Le prénom doit comporter au moins 3 caractères",
+    "required": "Le prénom est requis"
+  },
+  "lastName": {
+    "min": "Le nom doit comporter au moins 3 caractères",
+    "required": "Le nom est requis"
+  },
+  "username": {
+    "min": "Le nom d'utilisateur doit comporter au moins 3 caractères",
+    "required": "Le nom d'utilisateur est requis"
+  },
+  "email": {
+    "invalid": "E-mail invalide",
+    "required": "L'e-mail est requis"
+  },
+  "password": {
+    "min": "Le mot de passe doit comporter au moins 6 caractères",
+    "matches": "Le mot de passe doit contenir au moins un caractère spécial",
+    "required": "Le mot de passe est requis"
+  },
+  "confirmPassword": {
+    "match": "Le mot de passe est sa confirmation ne sont pas identiques",
+    "required": "La confirmation du mot de passe est requis"
+  },
+  "phone": {
+    "min": "Le téléphone doit comporter au moins 8 chiffres",
+    "required": "Le téléphone est requis"
+  },
+  "matricule": {
+    "min": "Le matricule doit comporter au moins 8 caractères",
+    "required": "La matricule est requis",
+    "exist": "La matricule existe déja pour cette station"
+  },
+  "tag": {
+    "min": "Le tag doit comporter au moins 8 caractères",
+    "required": "Le tag est requis",
+    "exist": "Le tag existe déja pour cette station"
+  },
+  "address": {
+    "min": "L'adresse doit comporter au moins 4 caractères",
+    "required": "L'adresse est requise"
+  },
+  "photo": {
+    "required": "La photo est requise"
+  },
+  "rotation": {
+    "min": "Rotation doit comporter au moins 3 caractères",
+    "required": "Roulement est requis"
+  },
+  "date": {
+    "required": "Date est requis"
+  },
+  "post": {
+    "min": "Poste doit comporter au moins 3 caractères",
+    "required": "Poste est requis"
+  },
+  "startingTime": {
+    "required": "Heure début est requis"
+  },
+  "endingTime": {
+    "required": "Heure fin est requis"
+  },
+  "pumpTeam": {
+    "min": "Il faut au moins rensigner une affectation à une pompe"
+  },
+  "fuelgradePrice": {
+    "moreThan": "Le prix doit étre supérieur à zero"
+  },
+  "plannedDate": {
+    "required": "La date de plannification est requise",
+    "greaterThan": "la date de plannification doit étre supérieur à la date et heure en cours"
+  }
+}

@@ -1,0 +1,228 @@
+import { Moment } from "moment";
+import { ReactNode } from "react";
+
+import { Mode } from "./enums";
+import { ChartFilter, Planning, Station, TankMeasurement, User } from "./model";
+
+export interface CustomCardProps {
+  title: string;
+  avatar?: string;
+  description?: string;
+  onClick: (title: string) => void;
+}
+
+export interface ReportSalesChartMenuProps {
+  filter: ChartFilter;
+  onChange: (newFilter: ChartFilter) => void;
+}
+
+export interface TankChartMenuProps {
+  tanks: Array<{ idConf: string | number | null }>;
+  selectedTank: string | number | null;
+  onChange: (idConf: string | number | null) => void;
+}
+
+export interface TransactionTableRowProps {
+  pump: string;
+  fuelGrade: string;
+  volume: number;
+  price: number;
+  amount: number;
+  //tag: string;
+  totalVolume: number;
+  totalAmount: number;
+  dateTimeStart: string;
+}
+
+export interface ConfiguratorProps {
+  secondary: boolean;
+  isOpen: boolean;
+  onClose: () => void;
+  isChecked: boolean;
+  onSwitch: (isChecked: boolean) => void;
+}
+
+export interface StationConfiguratorProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export interface FixedPluginProps {
+  secondary: boolean;
+  fixed: boolean;
+  onOpen: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}
+
+export interface ConfirmationModalProps {
+  message: string;
+  onConfirm: (station: Station) => void;
+}
+
+export interface AddStationModalProps {
+  onSubmit: () => void;
+}
+
+export interface AddStationModalRefType {
+  open: () => void;
+}
+
+export interface StationModalRefType {
+  open: (station: Station) => void;
+  close: () => void;
+}
+
+export interface SalesPumpGradesRowProps {
+  pumpId: number;
+  period?: string;
+  startDate?: string;
+  endDate?: string;
+}
+
+export interface LastTankRowProps {
+  tankId: number;
+}
+
+export interface StationModalProps {
+  onSubmit: (values: Station) => void;
+  station: Station | null;
+  onClose: () => void;
+  ref?: React.Ref<any>;
+}
+
+export interface AdminNavbarProps {
+  logoText?: string;
+  variant?: undefined;
+  children?: undefined;
+  fixed: boolean;
+  secondary?: boolean;
+  brandText?: string;
+  onOpen: () => void;
+  scrolled?: boolean;
+}
+
+export interface AuthNavbarProps {
+  logo?: any;
+  logoText?: string;
+  secondary?: any;
+}
+
+export interface RenderTrackProps {
+  style: React.CSSProperties;
+
+  [key: string]: any;
+}
+
+export interface RenderThumbProps {
+  style: React.CSSProperties;
+
+  [key: string]: any;
+}
+
+export interface SidebarProps {
+  logo: any;
+  routes?: any;
+  sidebarVariant?: string;
+  hamburgerColor?: string;
+  secondary?: any;
+}
+
+export interface StationRowProps {
+  id: number;
+  name: string;
+  address: string;
+  controllerPtsId: string;
+  firmwareInformations: any;
+  onEdit: () => void;
+  onDelete: () => void;
+}
+
+export interface AuthContextProps {
+  token: string | null;
+  isSignedIn: boolean;
+  user: User | null;
+  customerId: number;
+  signIn: (user: User, customerId: number) => void;
+  signOut: () => void;
+}
+
+export interface ESSContextProps {
+  station: Station | null;
+  stationId: number;
+  customerAccountId: number;
+  isLoading: boolean;
+  selectStation: (selectedStation: Station) => void;
+  clearContext: () => void;
+}
+
+export interface AuthContextProviderProps {
+  children: ReactNode;
+}
+
+export interface ModalRef {
+  open: (station?: Station) => void;
+  close: () => void;
+}
+
+export interface TankMeasurementRowProps {
+  tankMeasurement: TankMeasurement;
+}
+
+export interface PeriodeProps {
+  periode: string;
+  startDate: string;
+  endDate: string;
+}
+
+export interface TankDeliveryRowProps {
+  tank: string;
+  fuelGradeName: string;
+  productHeight: number;
+  waterHeight: number;
+  temperature: number;
+  productVolume: number;
+}
+
+export interface AddPumpAttendantModalProps {
+  onSubmit: () => void;
+  mode: Mode;
+}
+
+export interface AddPumpAttendantModalRefType {
+  open: () => void;
+}
+
+export interface AddTeamModalProps {
+  onSubmit: () => void;
+  mode: Mode;
+  shiftRotationId?: number;
+}
+
+export interface AddRotationModalProps {
+  onSubmit: () => void;
+  mode: Mode;
+}
+
+export interface MonthlyPlanningCalendarProps {
+  currentMonth?: Moment;
+  monthlyPlanning: Planning[];
+}
+
+export interface EditModalRefType {
+  open: () => void;
+}
+
+export interface ShiftPlanningExecutionDetailModalProps {
+  currentDay: Moment;
+}
+
+export interface SheetsGridSubmitProps {
+  onSubmit: () => void;
+}
+
+export interface AddGradesModalProps {
+  onSubmit: () => void;
+}
+
+export interface EditPlannedUpdatesProps {
+  onSubmit: () => void;
+}

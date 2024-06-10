@@ -1,0 +1,79 @@
+{
+  "name": {
+    "min": "Name must be at least 1 characters",
+    "required": "Name is required"
+  },
+  "firstName": {
+    "min": "First Name must be at least 3 characters",
+    "required": "First Name is required"
+  },
+  "lastName": {
+    "min": "Last Name must be at least 3 characters",
+    "required": "Last Name is required"
+  },
+  "username": {
+    "min": "User Name must be at least 3 characters",
+    "required": "Username is required"
+  },
+  "email": {
+    "invalid": "Invalid email",
+    "required": "Email is required"
+  },
+  "password": {
+    "min": "Password must be at least 6 characters",
+    "matches": "Password must contain at least one special character",
+    "required": "Password is required"
+  },
+  "confirmPassword": {
+    "match": "Passwords must match",
+    "required": "Confirm Password is required"
+  },
+  "phone": {
+    "min": "Phone must be at least 8 digits",
+    "required": "Phone is required"
+  },
+  "matricule": {
+    "min": "matricule must be at least 8 characters",
+    "required": "Matricule is required",
+    "exist": "Matricule already exists for this station"
+  },
+  "tag": {
+    "min": "tag must be at least 8 characters",
+    "required": "tag is required",
+    "exist": "Tag already exists for this station"
+  },
+  "address": {
+    "min": "Address must be at least 3 characters",
+    "required": "Address is required"
+  },
+  "photo": {
+    "required": "Photo is required"
+  },
+  "rotation": {
+    "min": "Rotation must be at least 3 characters",
+    "required": "Rotation is required"
+  },
+  "date": {
+    "required": "Date is required"
+  },
+  "post": {
+    "min": "Post must be at least 3 characters",
+    "required": "Post is required"
+  },
+  "startingTime": {
+    "required": "Start time is required"
+  },
+  "endingTime": {
+    "required": "end time is required"
+  },
+  "pumpTeam": {
+    "min": "At least one affectation should be selected"
+  },
+  "fuelgradePrice": {
+    "moreThan": "The price should be more than 0"
+  },
+  "plannedDate": {
+    "required": "Planned date is required",
+    "greaterThan": "Planned date must be greater than or equal to the current date and time."
+  }
+}

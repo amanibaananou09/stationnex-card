@@ -1,0 +1,10 @@
+{
+  "dashboard": "Dashboard",
+  "cardManagement": "Card management",
+  "transactions": "Transactions",
+  "payment": "Means of payment",
+  "facturation": "Billing & payment",
+  "support":"Support & assistance",
+  "profile": "Profile",
+  "signIn": "Sign In"
+}

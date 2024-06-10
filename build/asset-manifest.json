@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b0594618.css",
+    "main.js": "/static/js/main.d89141de.js",
+    "static/media/BgSignUp.png": "/static/media/BgSignUp.9071fda72f9d9a06bffa.png",
+    "static/media/avatar1.png": "/static/media/avatar1.eeef2af6dfcd3ff23cb8.png",
+    "static/media/shift.png": "/static/media/shift.2997b47f66dc880893c6.png",
+    "static/media/pump.png": "/static/media/pump.46e2203766ae664aaf04.png",
+    "static/media/planning.png": "/static/media/planning.13362e646527f49d54f6.png",
+    "static/media/en.png": "/static/media/en.841fc3c5dd8b20c06f42.png",
+    "static/media/group.png": "/static/media/group.64bd23c8cb360fb59298.png",
+    "static/media/station.png": "/static/media/station.0b1c0a3c4a97c2173e7e.png",
+    "static/media/Agenda.png": "/static/media/Agenda.dae8cab2e3d2ea338900.png",
+    "static/media/pompiste.png": "/static/media/pompiste.328037d63b256de623f2.png",
+    "static/media/fuel-station-logo.svg": "/static/media/fuel-station-logo.e147ffe0dc7080a943afeebbaedc3e92.svg",
+    "index.html": "/index.html",
+    "static/media/getFetch.cjs": "/static/media/getFetch.40f37ddea2378391108f.cjs",
+    "main.b0594618.css.map": "/static/css/main.b0594618.css.map",
+    "main.d89141de.js.map": "/static/js/main.d89141de.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b0594618.css",
+    "static/js/main.d89141de.js"
+  ]
+}

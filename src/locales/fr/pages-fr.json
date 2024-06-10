@@ -1,0 +1,305 @@
+{
+  "dashboard": {
+    "header": "Bienvenue sur votre tableau de bord !",
+    "text": "Cet espace permet de suivre vos transactions et de consulter vos factures.",
+    "tankLevel": "Niveau du Réservoir"
+  },
+  "reportSalesChartMenu": {
+    "allFuelGrades": "Toutes les carburants",
+    "allPumps": "Toutes les pompes"
+  },
+  "tankLevelChart": {
+    "changedVolume": "Volume changé",
+    "tankVolume": "Volume du réservoir",
+    "nodata": "Pas de données à afficher..."
+  },
+  "pumpSales": {
+    "totalSales": "Total des ventes",
+    "total": "Total"
+  },
+  "salesGrades": {
+    "totalSalesVolume": "Volume total des ventes",
+    "totalSalesAmount": "Montant total des ventes"
+  },
+  "tankMeasurement": {
+    "watervolume": "Volume d'eau"
+  },
+  "lastTankDeliveryTooltip": {
+    "header": "Dernière livraison de réservoir",
+    "date": "Date",
+    "deliveryAbsoluteValues": "Valeurs absolues de livraison ",
+    "productTcVolume": "Volume du produit TC ",
+    "productDensity": "Densité du produit ",
+    "productMass": "Masse du produit ",
+    "pumpsDispensedVolume": "Volume distribué des pompes "
+  },
+  "transactions": {
+    "header": "Transactions",
+    "price": "Prix",
+    "totalVolume": "Indice du volume",
+    "totalAmount": "Indice du montant",
+    "tag": "Tag",
+    "volumeGreater": "Filtres les transactions avec volume supérieur à ",
+    "noTransactions": "Aucune transaction trouvée."
+  },
+  "tankDeliveries": {
+    "header": "Livraison des réservoirs",
+    "noTankDelivery": "Aucune livraison de réservoir trouvée."
+  },
+  "profile": {
+    "header": "Détails du profil",
+    "name": "Utilisateur connecté",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "email": "E-mail"
+  },
+  "navbarLinks": {
+    "userLogin": "Nom d'utilisateur",
+    "myProfile": "Mon profil",
+    "signOut": "Déconnexion"
+  },
+  "configurator": {
+    "Configurator": "Configurateur",
+    "text": "Voir les options du tableau de bord",
+    "navbarFixed": "Barre de navigation",
+    "Dark_Light": "Foncé/clair",
+    "toggle": " Bascule"
+  },
+  "stationConfigurator": {
+    "title": "Liste des stations",
+    "placeholder": "recherchez votre station",
+    "empty": "Aucune station n'est affectée, veuillez contacter l'administrateur",
+    "accountName": "Nom du compte"
+  },
+  "signIn": {
+    "header": "STATIONNEX-CARD",
+    "platform": "Plateforme cartes carburant",
+    "text": "Connectez-vous pour continuer",
+    "useName": "Nom d'utilisateur",
+    "password": " Mot de passe",
+    "login": "CONNEXION",
+    "placeholderUsername": "Entrez votre nom d'utilisateur",
+    "placeholderPassword": "Entrez votre mot de passe",
+    "messageInvalid": "Nom d'utilisateur ou mot de passe incorrect.",
+    "forgotPassword": "Mot de passe oublié ?",
+    "dashboard": "Dashboard"
+  },
+  "ForgotPassword": {
+    "errorVide": "Veuillez entrer votre adresse e-mail.",
+    "errorInvalid": "Format d'adresse e-mail invalide. Veuillez utiliser une adresse e-mail valide, par exemple : 'exemple@domaine.com'",
+    "text": "Trouvez votre compte",
+    "description": "Veuillez entrer votre e-mail pour rechercher votre compte.",
+    "placeholderEmail": " Entrez votre e-mail",
+    "search": "Rechercher",
+    "ignore": "Ignorer",
+    "AlertDescription": "Veuillez vérifier votre boîte de réception (e-mail) pour les instructions de réinitialisation du mot de passe."
+  },
+  "resetPassword": {
+    "error": "Les mots de passe ne correspondent pas.",
+    "errorInvalid": "Veuillez remplir tous les champs.",
+    "text": "Choisissez un nouveau mot de passe",
+    "placeholderPassword": "Nouveau mot de passe",
+    "placeholderConfirmPassword": "Confirmer le mot de passe",
+    "continue": "Continuer",
+    "alertSuccess": "Mot de passe réinitialisé avec succès ! "
+  },
+  "attendant": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "coordinate": "Coordonnée",
+    "tag": "Tag",
+    "matricule": "Matricule",
+    "photo": "Photo",
+    "address": "Addresse",
+    "phone": "Numero de téléphone",
+    "statut": "Statut",
+    "active": "Actif",
+    "inactive": "Inactif",
+    "modal": {
+      "header": "Créer un nouveau pompiste",
+      "update": "Mettre à jour le pompiste",
+      "view": "Détails du pompiste"
+    },
+    "table": {
+      "title": "Liste des pompistes",
+      "empty": "Aucun pompiste défini"
+    }
+  },
+  "teams": {
+    "rotation": "Rotation",
+    "selectpumpAttendant": "Sélectionner un pompiste",
+    "name": "Nom de l'équipe",
+    "fullName": "Nom du pompiste",
+    "rotationSection": {
+      "name": "Rotation",
+      "validity": "Periode",
+      "dayOff": "Jours de repos",
+      "posts": "Postes",
+      "day": "jour(s)",
+      "post": "poste(s)",
+      "from": "De",
+      "to": "à"
+    },
+    "modal": {
+      "header": "Créer une nouvelle équipe",
+      "update": "Mettre à jour l'équipe",
+      "view": "Détails du  l'équipe"
+    },
+    "table": {
+      "title": "Liste des équipes de pompistes",
+      "empty": "Aucune équipe de pompistes définie",
+      "addPumpTeam": "Ajouter"
+    },
+    "alert": {
+      "title": "Aucune équipe de pompistes définie",
+      "description": "Veuillez créer une rotation avant."
+    }
+  },
+  "rotations": {
+    "title": "Liste des rotations",
+    "rotation": "Rotation",
+    "rotationName": "Nom de la rotation",
+    "post": "Poste",
+    "Schedule": "Horaires",
+    "ValidityPeriod": "Période de validité",
+    "empty": "Aucune rotation disponible",
+    "planificationMode": "Mode de planification",
+    "nbrOffDays": "Nombre de jours de repos",
+    "nbrOffDay": "Jours de repos",
+    "toast": {
+      "descriptionError": "Une erreur s'est produite :",
+      "descriptionSuccess": "Rotation est ajoute avec succès"
+    },
+    "shiftID": "ID du poste",
+    "shiftName": "Nom du poste",
+    "rotationStartValidityDate": "Début de validité de la rotation",
+    "rotationEndValidityDate": "Fin de validité de la rotation",
+    "startingTime": "Heure de début",
+    "endingTime": "Heure de fin"
+  },
+  "rotationModal": {
+    "update": "Mettre à jour la rotation",
+    "header": "Créer une nouvelle rotation",
+    "view": "Détails de la rotation",
+    "placeholderName": "Entrez la rotation",
+    "labelDateStart": "Valable du",
+    "placeholderDateStart": "Entrez la date de début de validité",
+    "labelau": "au",
+    "placeholderDateEnd": "Entrez la date de fin de validité",
+    "startTime": "Heure début",
+    "endingTime": "  Heure fin ",
+    "option": "Option",
+    "sameDay": "Même jour",
+    "consecutiveDays": "2 jours consécutifs",
+    "actions": "Actions",
+    "placeholderPost": "Entrez le poste",
+    "add": " Ajouter un poste",
+    "crossesDayBoundary": "Jour +1",
+    "confirmDelete": "Confirmer la  suppression",
+    "deleteConfirmationDescription": "Attention ,supprimer la  rotation peut entrainer la perte des données liés au planning !!!",
+    "confirmationTitle": "Confirmer le mise à jour ",
+    "confirmationDescription": "Attention : Modification de rotation détectée. Confirmez-vous la modification et souhaitez-vous réinitialiser le planning ? Cela peut entraîner la perte des données actuelles",
+    "crossesDayBoundaryAlert": "Veuillez sélectionner l'option de durée du poste dans le menu déroulant ci-dessous. Pour un poste s'étendant sur deux jours consécutifs, choisissez '2 Jours consécutifs'. Si le poste se déroule entièrement dans la même journée, sélectionnez 'Même jour'"
+  },
+  "planning": {
+    "title": "Planification du mois",
+    "rotationName": "Rotation en cours : ",
+    "noRotation": "Veuillez définir une rotation pour le mois en question.",
+    "noTeams": "Veuillez composer des équipes pour cette rotation.",
+    "date": "Date",
+    "setting": " Composition de chaque équipe ",
+    "nbDaysOff": "Nombre de jours de repos ",
+    "generate": "Génerer le planning",
+    "initialize": "Initialiser le planning",
+    "dayOff": "Repos",
+    "empty": "Aucun planning généré",
+    "confirmation": {
+      "title": {
+        "generate": "Générer un nouveau planning",
+        "initialize": "Réinitialiser le planning"
+      },
+      "message": {
+        "initialize": "Il y a déjà un planning généré pour le mois sélectionné. Voulez-vous supprimer toutes les modifications effectuées ?",
+        "generate": "Êtes-vous sûr de vouloir générer un nouveau planning ?"
+      }
+    },
+    "descriptionSuccess": "Le planning pour le mois en cours a été enregistré avec succès selon vos modifications.",
+    "weekDays": {
+      "Lundi": "Lundi",
+      "Mardi": "Mardi",
+      "Mercredi": "Mercredi",
+      "Jeudi": "Jeudi",
+      "Vendredi": "Vendredi",
+      "Samedi": "Samedi",
+      "Dimanche": "Dimanche"
+    }
+  },
+  "dailyAgenda": {
+    "title": "Agenda du jour",
+    "alertTitle": "Mode de paiement introuvable !",
+    "alertDescription": "Vous avez créé un compte client sans modes de paiement associés. Avant de pouvoir clôturer ce(s) poste(s), veuillez spécifier les modes de paiement utilisés dans la station",
+    "lock": "Verrouiller",
+    "unlock": "Déverrouiller",
+    "stop": "Arrêt",
+    "start": "Commencer",
+    "pumpAttendants": "Pompiste",
+    "totalVolume": "Volume total ventes",
+    "totalAmount": "Montant total ventes",
+    "successful": "Envoi réussi !",
+    "valid": "Valider",
+    "status": "Statut de recette",
+    "edit": "Modifier",
+    "disabled": "Désactivé pour ce jour.",
+    "confirmationMessage": "Vous êtes sur le point d'arrêter ce poste avant l'heure de fin prévue.la date de debut du poste suivant sera ajusté en conséquence. Veuillez confirmer votre action",
+    "confirmationTitle": "Confirmer l'arret du poste"
+  },
+  "fuelGrades": {
+    "PLANNED": "Planifié",
+    "SUCCEDED": "Réussi",
+    "FAILED": "Echoué",
+    "WAITING": "En attente",
+    "CANCELED": "Annulé",
+    "listTitle": "Liste des prix des carburants",
+    "historyTitle": "Historique des mise à jour de prix des  carburants",
+    "scheduledUpdatesTitle": "Mise à jour planifiés des carburants",
+    "empty": "Aucun carburant défini",
+    "emptyPlanification": "Aucune mise à jour planifiée trouvée",
+    "emptyHistory": "Aucun historique trouvé",
+    "fuelName": "Nom du carburant",
+    "type": "Type",
+    "update": "Mettre à jour le carburant",
+    "oldPrice": "Ancien prix",
+    "currentPrice": "Prix actuel",
+    "newPrice": "Nouveau prix",
+    "plannedDate": "Planifiée pour",
+    "executionDate": "Effectué  le",
+    "scheduledDate": "Planifiée le",
+    "confirmMessage": "Confirmer l'annulation de ce mise a jour planifiée ?",
+    "requesterName": "Planifiée par",
+    "status": "status",
+    "date": "Date application",
+    "price": "Prix",
+    "history": "Historique",
+    "planification": "Mise à jour planifiées"
+  },
+  "sheet": {
+    "title": "Incohérence de montant détectée:",
+    "message": "le montant déclaré pour ce post présente une inchérence avec le montant affiché par le système.Avant de cloturer le poste, n'hésitez pas à confirmer cette incohérence en laissant un commentaire:",
+    "error": "Erreur lors de l'envoi :",
+    "payments": "Paiements",
+    "total": "Total des ventes",
+    "SOLDED": "Soldé",
+    "FORCED": "Forcé"
+  },
+  "filter": {
+    "filterBy": "Filtrer par :",
+    "attendant": "Pompiste",
+    "pump": "Pompe",
+    "fuelGrade": "Carburant",
+    "volume": "Volume",
+    "period": "Période",
+    "clear": "clear"
+  }
+}
