@@ -1,6 +1,16 @@
 import "jspdf-autotable";
 
-import { Button, Card, Divider, Flex, Text } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Text,
+} from "@chakra-ui/react";
+import Card from "components/Card/Card";
 import CardBody from "components/Card/CardBody";
 import ColumnSelectionDropdown from "components/ColumnSelector/ColumnSelector";
 import { UIColumnDefinitionType } from "components/UI/Table/Types";
@@ -14,6 +24,8 @@ import { useTransaction } from "hooks/use-transaction";
 import TransactionsExporter from "../../components/Exporter/TransactionsExport";
 import TransactionFilter from "../../components/Filter/TransactionFilter";
 import { TableSkeleton } from "../../components/Skeleton/Skeletons";
+import CardHeader from "../../components/Card/CardHeader";
+import { Scrollbars } from "react-custom-scrollbars";
 
 const Transactions = () => {
   const { t } = useTranslation();
@@ -30,9 +42,8 @@ const Transactions = () => {
     city: [],
   });
 
-  const { transactions, totalPages, totalElements, isLoading } = useTransaction(
-    creteria,
-  );
+  const { transactions, totalPages, totalElements, isLoading } =
+    useTransaction(creteria);
 
   const columns: UIColumnDefinitionType<Transaction>[] = [
     {
@@ -80,23 +91,20 @@ const Transactions = () => {
   ];
 
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
-  const [displayedColumns, setDisplayedColumns] = useState<
-    UIColumnDefinitionType<Transaction>[]
-  >(columns);
+  const [displayedColumns, setDisplayedColumns] =
+    useState<UIColumnDefinitionType<Transaction>[]>(columns);
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
       <Card pb="0px">
-        <ColumnSelectionDropdown
-          columns={columns}
-          visibleColumns={visibleColumns}
-          setVisibleColumns={setVisibleColumns}
-          setDisplayedColumns={setDisplayedColumns}
-          isOpen={isOpen}
-        />
-        <Flex direction="row" p="20px" justifyContent="space-between">
+        <CardHeader
+          p="2px 0px 22px 0px"
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Flex flexDirection="column">
-            <Text fontSize="2xl" fontWeight="bold" mt={20}>
+            <Text fontSize="2xl" fontWeight="bold">
               {t("transactions.header")}
             </Text>
             <Text fontSize="l" fontWeight="normal">
@@ -104,9 +112,16 @@ const Transactions = () => {
             </Text>
           </Flex>
           {transactions && <TransactionsExporter transactions={transactions} />}
-        </Flex>
+        </CardHeader>
+        <ColumnSelectionDropdown
+          columns={columns}
+          visibleColumns={visibleColumns}
+          setVisibleColumns={setVisibleColumns}
+          setDisplayedColumns={setDisplayedColumns}
+          isOpen={isOpen}
+        />
         <CardBody>
-          <Flex direction="row" p="20px" justifyContent="space-between">
+          <Box p="20px">
             <TransactionFilter
               onChange={(filter) =>
                 setCreteria((prev) => ({
@@ -115,29 +130,60 @@ const Transactions = () => {
                 }))
               }
             />
-          </Flex>
+          </Box>
 
           <Divider />
-          <Flex overflowX="auto">
-            {!isLoading && (
-              <UITable
-                columns={displayedColumns}
-                data={transactions}
-                emptyListMessage={t("transactions.noTransactions")}
-              />
-            )}
-
-            {isLoading && <TableSkeleton />}
-            <Button
-              size="sm"
-              onClick={() => setIsOpen(!isOpen)}
-              bg="white"
-              mr={50}
-              mt={3}
-            >
-              <FaEllipsisV />
-            </Button>
-          </Flex>
+          <CardBody>
+            <Box pb="0px">
+              <Flex direction="row" margin="30px 0px">
+                {isLoading ? (
+                  <TableSkeleton />
+                ) : (
+                  <>
+                    {!isLoading && transactions && transactions.length > 0 ? (
+                      <Scrollbars
+                        autoHide
+                        style={{ height: "calc(100vh - 185px)" }}
+                      >
+                        <UITable
+                          columns={displayedColumns}
+                          data={transactions}
+                          emptyListMessage={t("transactions.noTransactions")}
+                        />
+                      </Scrollbars>
+                    ) : (
+                      <Flex
+                        justifyContent="center"
+                        alignItems="center"
+                        width="100%"
+                      >
+                        <Alert
+                          status="info"
+                          variant="subtle"
+                          flexDirection="column"
+                          alignItems="center"
+                          justifyContent="center"
+                          textAlign="center"
+                          mt="0px"
+                          maxWidth="400px"
+                        >
+                          <AlertIcon />
+                          <AlertTitle mt={4} mb={1} fontSize="lg">
+                            {t("transactions.noTransactions")}
+                          </AlertTitle>
+                        </Alert>
+                      </Flex>
+                    )}
+                  </>
+                )}
+                {!isLoading && transactions && transactions.length > 0 && (
+                  <Button onClick={() => setIsOpen(!isOpen)} bg="white" mr={1}>
+                    <FaEllipsisV />
+                  </Button>
+                )}
+              </Flex>
+            </Box>
+          </CardBody>
         </CardBody>
 
         {!isLoading && transactions && transactions.length > 0 && (

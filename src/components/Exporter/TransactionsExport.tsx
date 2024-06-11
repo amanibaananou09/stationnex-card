@@ -99,7 +99,7 @@ const TransactionsExporter = ({ transactions }: TransactionExporterProps) => {
   };
 
   return (
-    <ButtonGroup size="sm" spacing={4} mt={20}>
+    <ButtonGroup size="sm" spacing={4}>
       <Button onClick={exportToExcelHandler}>{t("common.exportExcel")}</Button>
       <Button onClick={exportToPDFHandler}>{t("common.exportPDF")}</Button>
     </ButtonGroup>
