@@ -10,6 +10,7 @@ import { TbReport } from "react-icons/tb";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { PiHandCoinsFill } from "react-icons/pi";
 import Dashboard from "../views/Dashboard/Dashboard";
+import Transactions from "views/Dashboard/Transactions";
 
 export const dashboardRoutes = (): RouteConfig[] => {
   const { t } = useTranslation();
@@ -32,7 +33,7 @@ export const dashboardRoutes = (): RouteConfig[] => {
       path: "/transactions",
       name: t("routes.transactions"),
       icon: <TbReport color="inherit" />,
-      //component: Transactions,
+      component: Transactions,
       layout: "/stationnex-card",
     },
     {

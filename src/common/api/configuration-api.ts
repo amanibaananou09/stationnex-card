@@ -58,9 +58,9 @@ export const getAllPumpByNozzel = async (
   return response.data;
 };
 
-export const getallTransactionPump = async (
-  station: Station,
+export const getAllTransaction = async (
   creteria: TransactionCreteria,
+  customerId: number | undefined,
 ): Promise<{
   content: Transaction[];
   totalPages: number;
@@ -68,20 +68,17 @@ export const getallTransactionPump = async (
   numberOfElements: number;
 }> => {
   const response = await api.post(
-    `${API_URL}/transaction/${station.controllerPts.id}?page=${creteria.page}&size=${creteria.size}`,
+    `/transaction?customerId=${customerId}&page=${creteria.page}&size=${creteria.size}`,
     {
-      pumpAttendantIds:
-        creteria.pumpAttendantIds.length == 0
-          ? null
-          : creteria.pumpAttendantIds,
-      fuelGradeIds:
-        creteria.fuelGradeIds.length == 0 ? null : creteria.fuelGradeIds,
-      pumpIds: creteria.pumpIds.length == 0 ? null : creteria.pumpIds,
+      cardIds: creteria.cardIds.length == 0 ? null : creteria.cardIds,
+      salePointIds:
+        creteria.salePointIds.length == 0 ? null : creteria.salePointIds,
+      productIds: creteria.productIds.length == 0 ? null : creteria.productIds,
+      ville: creteria.city.length == 0 ? null : creteria.city,
       period: {
         from: creteria.period.from,
         to: creteria.period.to,
       },
-      volume: creteria.volume,
     },
   );
 

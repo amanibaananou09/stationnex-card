@@ -1,4 +1,3 @@
-import { Moment } from "moment";
 import { PeriodType } from "./enums";
 
 export interface Station {
@@ -55,14 +54,6 @@ export interface Transaction {
   totalAmount: number;
   dateTimeStart: string;
   pumpAttendantName: string;
-}
-
-export interface Filter {
-  pumpAttendantIds: number[];
-  fuelGradeIds: number[];
-  pumpIds: number[];
-  period: { from: string; to: string };
-  volume: { min: number; max: number };
 }
 
 export interface TransactionCreteria extends Filter {
@@ -129,10 +120,6 @@ export interface RouteConfig {
 
 export interface SubMenuConfig extends RouteConfig {
   image?: JSX.Element;
-}
-
-export interface RouteParams {
-  id: string;
 }
 
 export interface GeneralUser {
@@ -386,21 +373,6 @@ export interface PlanningUpdate {
   day: string;
 }
 
-export interface ShiftPlanning {
-  stationId: number;
-  month: Moment;
-  numberOffDays?: string;
-  planificationMode: string;
-  shiftRotationId: number;
-}
-
-export interface ESSError {
-  error: string;
-  status: number;
-  path: string;
-  timestamp: string;
-}
-
 export interface PlanningExecution {
   id: number;
   pumpAttendant: any;
@@ -517,7 +489,61 @@ export interface PriceModificationRequestCreteria {
   endDate?: string;
 }
 
-export interface shiftPlanningFormValues {
+export interface Transaction {
+  id: string;
+  cardId: string;
+  dateTime: string;
+  city: string;
+  productName: string;
+  price: number;
+  productId: number;
+  quantity: number;
+  amount: number;
+  salePointName: string;
+  address: string;
+  availableBalance: number;
+  cardIdentifier: string;
+}
+
+export interface Filter {
+  cardIds: number[];
+  salePointIds: number[];
+  productIds: number[];
+  period: { from: string; to: string };
+  city: string[];
+}
+
+export interface GeneralCard {
+  index?: number;
+  id?: string;
+  companyName: string;
+  holder: string;
+  cardId: string;
+  codePin: string;
+  holderPassword: string;
+  expirationDate: string;
+  actif: boolean;
+  customerId?: string;
+  accountId?: string;
+  cardGroupId?: string;
+  cardGroupName: string;
+}
+
+export interface Product {
   id: number;
-  pumpAttendantTeamId: string;
+  name: string;
+  price: number;
+}
+
+export interface SalePoint {
+  id?: number;
+  name?: string;
+  countryName?: string;
+  city?: string;
+  area?: string;
+  actif?: boolean;
+  address?: string;
+  phone?: string;
+  email?: string;
+  username?: string;
 }
