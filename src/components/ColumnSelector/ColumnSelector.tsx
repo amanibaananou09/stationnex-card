@@ -4,42 +4,46 @@ import { UIColumnDefinitionType } from "components/UI/Table/Types";
 
 interface ColumnSelectionDropdownProps {
   columns: UIColumnDefinitionType<any>[];
-  invisibleColumns: string[];
-  setInvisibleColumns: React.Dispatch<React.SetStateAction<string[]>>;
-  setShowColumns: React.Dispatch<
+  visibleColumns: string[];
+  setVisibleColumns: React.Dispatch<React.SetStateAction<string[]>>;
+  setDisplayedColumns: React.Dispatch<
     React.SetStateAction<UIColumnDefinitionType<any>[]>
   >;
   isOpen: boolean;
-  onClose: () => void;
 }
 
 const ColumnSelectionDropdown = ({
   columns,
-  invisibleColumns,
-  setInvisibleColumns,
-  setShowColumns,
+  visibleColumns,
+  setVisibleColumns,
+  setDisplayedColumns,
   isOpen,
-  onClose,
 }: ColumnSelectionDropdownProps) => {
   const toggleColumnVisibility = (columnKey: string | undefined) => {
-    if (columnKey) {
-      setInvisibleColumns((previnvisibleColumns) => {
-        const isColumnKeyVisible = previnvisibleColumns.includes(columnKey);
-        const updatedinvisibleColumns = isColumnKeyVisible
-          ? previnvisibleColumns.filter((key) => key !== columnKey)
-          : [...previnvisibleColumns, columnKey];
-        // Update showColumns based on updatedinvisibleColumns
-        const updatedshowColumns = columns.filter((col) =>
-          updatedinvisibleColumns.includes(col.key as string),
+    if (columnKey && columnKey !== "#") {
+      setVisibleColumns((prevVisibleColumns) => {
+        const isColumnKeyVisible = prevVisibleColumns.includes(columnKey);
+        const updatedVisibleColumns = isColumnKeyVisible
+          ? prevVisibleColumns.filter((key) => key !== columnKey)
+          : [...prevVisibleColumns, columnKey];
+
+        if (!updatedVisibleColumns.includes("#")) {
+          updatedVisibleColumns.push("#");
+        }
+        // Update displayedColumns based on updatedVisibleColumns
+        const updatedDisplayedColumns = columns.filter((col) =>
+          updatedVisibleColumns.includes(col.key as string),
         ) as UIColumnDefinitionType<any>[];
 
-        if (updatedshowColumns.length === 0) {
-          setShowColumns(columns);
+        if (
+          updatedDisplayedColumns.length === 1 &&
+          updatedDisplayedColumns[0].key === "#"
+        ) {
+          setDisplayedColumns(columns);
         } else {
-          setShowColumns([...updatedshowColumns]);
+          setDisplayedColumns([...updatedDisplayedColumns]);
         }
-        onClose();
-        return updatedinvisibleColumns;
+        return updatedVisibleColumns;
       });
     }
   };
@@ -49,7 +53,7 @@ const ColumnSelectionDropdown = ({
       {isOpen && (
         <Box
           position="absolute"
-          margin="100px 0px"
+          top="40px"
           right="0"
           bg="white"
           border="1px solid"
@@ -65,7 +69,7 @@ const ColumnSelectionDropdown = ({
               return (
                 <Checkbox
                   key={col.key}
-                  isChecked={invisibleColumns.includes(col.key)}
+                  isChecked={visibleColumns.includes(col.key)}
                   onChange={() => toggleColumnVisibility(col.key)}
                 >
                   {col.header}

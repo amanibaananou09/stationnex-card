@@ -33,15 +33,6 @@
     "productMass": "Masse du produit ",
     "pumpsDispensedVolume": "Volume distribué des pompes "
   },
-  "transactions": {
-    "header": "Transactions",
-    "price": "Prix",
-    "totalVolume": "Indice du volume",
-    "totalAmount": "Indice du montant",
-    "tag": "Tag",
-    "volumeGreater": "Filtres les transactions avec volume supérieur à ",
-    "noTransactions": "Aucune transaction trouvée."
-  },
   "tankDeliveries": {
     "header": "Livraison des réservoirs",
     "noTankDelivery": "Aucune livraison de réservoir trouvée."
@@ -294,12 +285,25 @@
     "FORCED": "Forcé"
   },
   "filter": {
-    "filterBy": "Filtrer par :",
-    "attendant": "Pompiste",
-    "pump": "Pompe",
-    "fuelGrade": "Carburant",
+    "filterBy": "Filtrer par",
+    "cardId": "ID carte",
+    "station": "Point de vente",
+    "product": "Carburant",
+    "city": "Ville",
+    "period": "Periode"
+  },
+  "transactions": {
+    "noTransactions": "Aucune transaction trouvée",
+    "cardId": "ID carte",
+    "period": "Date et heure",
+    "product": "Carburant",
+    "price": "Prix",
     "volume": "Volume",
-    "period": "Période",
-    "clear": "clear"
+    "amount": "Montant",
+    "volumeRemaining": "Volume restant (Litres)",
+    "station": "Point de vente",
+    "ville": "Ville",
+    "header": "Suivi des transactions",
+    "text": "Consultez la liste de vos transactions de carburant."
   }
 }

@@ -33,15 +33,6 @@
     "productMass": "Product mass",
     "pumpsDispensedVolume": "Pumps dispensed volume"
   },
-  "transactions": {
-    "header": "Transactions",
-    "price": "Price",
-    "totalVolume": "Index volume",
-    "totalAmount": "Index amount",
-    "tag": "Tag",
-    "volumeGreater": "Filters transactions with volume greater than ",
-    "noTransactions": "No transactions found."
-  },
   "tankDeliveries": {
     "header": "Tank delivery",
     "noTankDelivery": "No tank deliveries found."
@@ -294,12 +285,25 @@
     "FORCED": "Forced"
   },
   "filter": {
-    "filterBy": "Filter By : ",
-    "attendant": "Pump attendant",
-    "pump": "Pump",
-    "fuelGrade": "Fuel Grade",
+    "filterBy": "Filter by",
+    "cardId": "Card ID",
+    "station": "Point of sale",
+    "product": "Fuel Grade",
+    "city": "City",
+    "period": "Period"
+  },
+  "transactions": {
+    "noTransactions": "No transactions found",
+    "cardId": "Card ID",
+    "period": "Date and time",
+    "product": "Fuel Grade",
+    "price": "Price",
     "volume": "Volume",
-    "period": "Period",
-    "clear": "clear"
+    "amount": "Amount",
+    "volumeRemaining": "Remaining volume (Liters)",
+    "station": "Point of sale",
+    "city": "City",
+    "header": "Transaction Tracking",
+    "text": "View the list of your fuel transactions"
   }
 }
