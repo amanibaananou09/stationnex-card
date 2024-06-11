@@ -96,194 +96,7 @@
     "continue": "Continuer",
     "alertSuccess": "Mot de passe réinitialisé avec succès ! "
   },
-  "attendant": {
-    "firstName": "Prénom",
-    "lastName": "Nom",
-    "coordinate": "Coordonnée",
-    "tag": "Tag",
-    "matricule": "Matricule",
-    "photo": "Photo",
-    "address": "Addresse",
-    "phone": "Numero de téléphone",
-    "statut": "Statut",
-    "active": "Actif",
-    "inactive": "Inactif",
-    "modal": {
-      "header": "Créer un nouveau pompiste",
-      "update": "Mettre à jour le pompiste",
-      "view": "Détails du pompiste"
-    },
-    "table": {
-      "title": "Liste des pompistes",
-      "empty": "Aucun pompiste défini"
-    }
-  },
-  "teams": {
-    "rotation": "Rotation",
-    "selectpumpAttendant": "Sélectionner un pompiste",
-    "name": "Nom de l'équipe",
-    "fullName": "Nom du pompiste",
-    "rotationSection": {
-      "name": "Rotation",
-      "validity": "Periode",
-      "dayOff": "Jours de repos",
-      "posts": "Postes",
-      "day": "jour(s)",
-      "post": "poste(s)",
-      "from": "De",
-      "to": "à"
-    },
-    "modal": {
-      "header": "Créer une nouvelle équipe",
-      "update": "Mettre à jour l'équipe",
-      "view": "Détails du  l'équipe"
-    },
-    "table": {
-      "title": "Liste des équipes de pompistes",
-      "empty": "Aucune équipe de pompistes définie",
-      "addPumpTeam": "Ajouter"
-    },
-    "alert": {
-      "title": "Aucune équipe de pompistes définie",
-      "description": "Veuillez créer une rotation avant."
-    }
-  },
-  "rotations": {
-    "title": "Liste des rotations",
-    "rotation": "Rotation",
-    "rotationName": "Nom de la rotation",
-    "post": "Poste",
-    "Schedule": "Horaires",
-    "ValidityPeriod": "Période de validité",
-    "empty": "Aucune rotation disponible",
-    "planificationMode": "Mode de planification",
-    "nbrOffDays": "Nombre de jours de repos",
-    "nbrOffDay": "Jours de repos",
-    "toast": {
-      "descriptionError": "Une erreur s'est produite :",
-      "descriptionSuccess": "Rotation est ajoute avec succès"
-    },
-    "shiftID": "ID du poste",
-    "shiftName": "Nom du poste",
-    "rotationStartValidityDate": "Début de validité de la rotation",
-    "rotationEndValidityDate": "Fin de validité de la rotation",
-    "startingTime": "Heure de début",
-    "endingTime": "Heure de fin"
-  },
-  "rotationModal": {
-    "update": "Mettre à jour la rotation",
-    "header": "Créer une nouvelle rotation",
-    "view": "Détails de la rotation",
-    "placeholderName": "Entrez la rotation",
-    "labelDateStart": "Valable du",
-    "placeholderDateStart": "Entrez la date de début de validité",
-    "labelau": "au",
-    "placeholderDateEnd": "Entrez la date de fin de validité",
-    "startTime": "Heure début",
-    "endingTime": "  Heure fin ",
-    "option": "Option",
-    "sameDay": "Même jour",
-    "consecutiveDays": "2 jours consécutifs",
-    "actions": "Actions",
-    "placeholderPost": "Entrez le poste",
-    "add": " Ajouter un poste",
-    "crossesDayBoundary": "Jour +1",
-    "confirmDelete": "Confirmer la  suppression",
-    "deleteConfirmationDescription": "Attention ,supprimer la  rotation peut entrainer la perte des données liés au planning !!!",
-    "confirmationTitle": "Confirmer le mise à jour ",
-    "confirmationDescription": "Attention : Modification de rotation détectée. Confirmez-vous la modification et souhaitez-vous réinitialiser le planning ? Cela peut entraîner la perte des données actuelles",
-    "crossesDayBoundaryAlert": "Veuillez sélectionner l'option de durée du poste dans le menu déroulant ci-dessous. Pour un poste s'étendant sur deux jours consécutifs, choisissez '2 Jours consécutifs'. Si le poste se déroule entièrement dans la même journée, sélectionnez 'Même jour'"
-  },
-  "planning": {
-    "title": "Planification du mois",
-    "rotationName": "Rotation en cours : ",
-    "noRotation": "Veuillez définir une rotation pour le mois en question.",
-    "noTeams": "Veuillez composer des équipes pour cette rotation.",
-    "date": "Date",
-    "setting": " Composition de chaque équipe ",
-    "nbDaysOff": "Nombre de jours de repos ",
-    "generate": "Génerer le planning",
-    "initialize": "Initialiser le planning",
-    "dayOff": "Repos",
-    "empty": "Aucun planning généré",
-    "confirmation": {
-      "title": {
-        "generate": "Générer un nouveau planning",
-        "initialize": "Réinitialiser le planning"
-      },
-      "message": {
-        "initialize": "Il y a déjà un planning généré pour le mois sélectionné. Voulez-vous supprimer toutes les modifications effectuées ?",
-        "generate": "Êtes-vous sûr de vouloir générer un nouveau planning ?"
-      }
-    },
-    "descriptionSuccess": "Le planning pour le mois en cours a été enregistré avec succès selon vos modifications.",
-    "weekDays": {
-      "Lundi": "Lundi",
-      "Mardi": "Mardi",
-      "Mercredi": "Mercredi",
-      "Jeudi": "Jeudi",
-      "Vendredi": "Vendredi",
-      "Samedi": "Samedi",
-      "Dimanche": "Dimanche"
-    }
-  },
-  "dailyAgenda": {
-    "title": "Agenda du jour",
-    "alertTitle": "Mode de paiement introuvable !",
-    "alertDescription": "Vous avez créé un compte client sans modes de paiement associés. Avant de pouvoir clôturer ce(s) poste(s), veuillez spécifier les modes de paiement utilisés dans la station",
-    "lock": "Verrouiller",
-    "unlock": "Déverrouiller",
-    "stop": "Arrêt",
-    "start": "Commencer",
-    "pumpAttendants": "Pompiste",
-    "totalVolume": "Volume total ventes",
-    "totalAmount": "Montant total ventes",
-    "successful": "Envoi réussi !",
-    "valid": "Valider",
-    "status": "Statut de recette",
-    "edit": "Modifier",
-    "disabled": "Désactivé pour ce jour.",
-    "confirmationMessage": "Vous êtes sur le point d'arrêter ce poste avant l'heure de fin prévue.la date de debut du poste suivant sera ajusté en conséquence. Veuillez confirmer votre action",
-    "confirmationTitle": "Confirmer l'arret du poste"
-  },
-  "fuelGrades": {
-    "PLANNED": "Planifié",
-    "SUCCEDED": "Réussi",
-    "FAILED": "Echoué",
-    "WAITING": "En attente",
-    "CANCELED": "Annulé",
-    "listTitle": "Liste des prix des carburants",
-    "historyTitle": "Historique des mise à jour de prix des  carburants",
-    "scheduledUpdatesTitle": "Mise à jour planifiés des carburants",
-    "empty": "Aucun carburant défini",
-    "emptyPlanification": "Aucune mise à jour planifiée trouvée",
-    "emptyHistory": "Aucun historique trouvé",
-    "fuelName": "Nom du carburant",
-    "type": "Type",
-    "update": "Mettre à jour le carburant",
-    "oldPrice": "Ancien prix",
-    "currentPrice": "Prix actuel",
-    "newPrice": "Nouveau prix",
-    "plannedDate": "Planifiée pour",
-    "executionDate": "Effectué  le",
-    "scheduledDate": "Planifiée le",
-    "confirmMessage": "Confirmer l'annulation de ce mise a jour planifiée ?",
-    "requesterName": "Planifiée par",
-    "status": "status",
-    "date": "Date application",
-    "price": "Prix",
-    "history": "Historique",
-    "planification": "Mise à jour planifiées"
-  },
-  "sheet": {
-    "title": "Incohérence de montant détectée:",
-    "message": "le montant déclaré pour ce post présente une inchérence avec le montant affiché par le système.Avant de cloturer le poste, n'hésitez pas à confirmer cette incohérence en laissant un commentaire:",
-    "error": "Erreur lors de l'envoi :",
-    "payments": "Paiements",
-    "total": "Total des ventes",
-    "SOLDED": "Soldé",
-    "FORCED": "Forcé"
-  },
+
   "filter": {
     "filterBy": "Filtrer par",
     "cardId": "ID carte",
@@ -305,5 +118,52 @@
     "ville": "Ville",
     "header": "Suivi des transactions",
     "text": "Consultez la liste de vos transactions de carburant."
+  },
+  "cardManagement": {
+    "header": "Gérer mes cartes",
+    "subtitle": "Consultez la liste de vos cartes actives.",
+    "topUp": "Recharger une carte",
+    "companyName": "Nom de l'entreprise",
+    "holder": "Nom du titulaire de la carte",
+    "cardId": "ID de la carte",
+    "codePin": "Code PIN de la carte",
+    "holderPassword": "Mot de passe détenteur",
+    "expirationDate": "Date d’expiration",
+    "status": "Statut de la carte",
+    "cardGroup": "Groupe de cartes",
+    "isLoading": "Vous ne possédez pas de carte",
+    "updateStatusDialog": {
+      "title": "Mise à jour du statut",
+      "desativationMessage": "Etes-vous sur de vouloir désactiver cette carte ?",
+      "activationMessage": "Etes-vous sur de vouloir activer cette carte ?"
+    },
+    "active": "Active",
+    "inactive": "Désactivé"
+  },
+  "card": {
+    "header": "Cartes actives",
+    "companyName": "Nom de l'entreprise",
+    "holder": "Nom du titulaire",
+    "cardId": "ID de la carte",
+    "cardPin": "Code PIN",
+    "holderPassword": "Mot de passe détenteur",
+    "expirationDate": "Date d’expiration",
+    "statut": "Statut",
+    "cardGroup": "Groupe de cartes"
+  },
+  "cardSearch": {
+    "header": "Rechercher une carte par:",
+    "holder": "Titulaire",
+    "cardId": "ID",
+    "expirationDate": "Date d'expiration",
+    "status": "Statut",
+    "filterType": {
+      "label": "Filtre par",
+      "name": "Nom",
+      "creator": "Créateur",
+      "parent": "Compte parent"
+    },
+    "filterTextLabel": "Texte",
+    "search": "Rechercher"
   }
 }

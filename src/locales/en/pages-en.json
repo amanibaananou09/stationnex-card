@@ -96,194 +96,6 @@
     "continue": "Continue",
     "alertSuccess": "Password successfully reset !"
   },
-  "attendant": {
-    "firstName": "First name",
-    "lastName": "Last name",
-    "coordinate": "Coordinate",
-    "tag": "Tag",
-    "photo": "Photo",
-    "matricule": "Registration number",
-    "address": "Address",
-    "phone": "Phone",
-    "status": "Status",
-    "active": "Active",
-    "inactive": "Inactive",
-    "modal": {
-      "header": "Create new pumpAttendant",
-      "update": "Update pumpAttendant",
-      "view": "PumpAttendant details"
-    },
-    "table": {
-      "title": "List of pump attendants",
-      "empty": "No pump attendants found"
-    }
-  },
-  "teams": {
-    "rotation": "Rotation",
-    "selectpumpAttendant": "Select a pump attendant",
-    "name": "Team name",
-    "fullName": "Pump attendant name ",
-    "rotationSection": {
-      "name": "Rotation",
-      "validity": "Period",
-      "dayOff": "Day off",
-      "posts": "Posts",
-      "day": "Day(s)",
-      "post": "Post(s)",
-      "from": "From",
-      "to": "to"
-    },
-    "modal": {
-      "header": "Create new team",
-      "update": "Update team",
-      "view": "Team details"
-    },
-    "table": {
-      "title": "List of pump attendants teams",
-      "empty": "No team of pump attendants found",
-      "addPumpTeam": "Add New"
-    },
-    "alert": {
-      "title": "No team of pump attendants found",
-      "description": "Please create a forward rotation."
-    }
-  },
-  "rotations": {
-    "title": "List of rotations",
-    "rotation": "Rotation",
-    "rotationName": "Rotation name",
-    "post": "Post",
-    "Schedule": "Schedule",
-    "ValidityPeriod": "Validity Period",
-    "empty": "No rotation available",
-    "planificationMode": "Planification mode",
-    "nbrOffDays": "Number off days",
-    "nbrOffDay": "Off days",
-    "toast": {
-      "descriptionError": "An error has occurred :",
-      "descriptionSuccess": "Rotation is added successfully"
-    },
-    "shiftID": "Shift Id",
-    "shiftName": "Shift name",
-    "rotationStartValidityDate": "Start of rotation validity",
-    "rotationEndValidityDate": "End of rotation validity",
-    "startingTime": "Starting time",
-    "endingTime": "Ending time"
-  },
-  "rotationModal": {
-    "update": "Update rotation",
-    "header": "Create new rotation",
-    "view": "Rotation details",
-    "placeholderName": "Enter the rotation ",
-    "labelDateStart": "Valid from",
-    "placeholderDateStart": "Enter the validity start date",
-    "labelau": "At",
-    "placeholderDateEnd": "Enter the expiry date",
-    "startTime": "Start time",
-    "endingTime": "Ending time ",
-    "option": "Option",
-    "sameDay": "Same day",
-    "consecutiveDays": "2 consecutive days ",
-    "actions": "Actions",
-    "placeholderPost": "Enter the post",
-    "add": "Add a post",
-    "crossesDayBoundary": "day +1",
-    "confirmationTitle": "Confirm update ",
-    "confirmDelete": "Confirm delete",
-    "deleteConfirmationDescription": "Warning ,delete rotation can leads to losing scheduled data !!!",
-    "confirmationDescription": "Warning: Rotation modification detected. Do you confirm the change and would you like to reset the schedule? This may cause loss of current data",
-    "crossesDayBoundaryAlert": "Please select the shift duration option from the drop-down menu below. For a shift spanning two consecutive days, choose '2 Consecutive Days'. If the position takes place entirely on the same day, select 'Same day'"
-  },
-  "planning": {
-    "title": "Monthly Planning",
-    "rotationName": "Rotation in progress : ",
-    "noRotation": "Please set a rotation for the month in question.",
-    "noTeams": "Please create teams for this rotation.",
-    "date": "Date",
-    "setting": "Composition of each team  ",
-    "nbDaysOff": "Number of days off ",
-    "generate": "Generate planning",
-    "initialize": "Initialize planning",
-    "dayOff": "Day off",
-    "empty": "No planning was generated",
-    "confirmation": {
-      "title": {
-        "generate": "Generate new planning",
-        "initialize": "Reinitialize planning"
-      },
-      "message": {
-        "initialize": "There is already a schedule generated for the selected month. Do you want to delete all the changes made?",
-        "generate": "Are you sure you want to generate a new planning?"
-      }
-    },
-    "descriptionSuccess": " The planning for the current month has been successfully updated.",
-    "weekDays": {
-      "Lundi": "Monday",
-      "Mardi": "Tuesday",
-      "Mercredi": "Wednesday",
-      "Jeudi": "Thursday",
-      "Vendredi": "Friday",
-      "Samedi": "Sturday",
-      "Dimanche": "Sunday"
-    }
-  },
-  "dailyAgenda": {
-    "title": "Daily agenda",
-    "alertTitle": "Payment method not found !",
-    "alertDescription": "You have created a customer account without associated payment methods. Before you can close shift(s), please specify the payment methods used at the station",
-    "lock": "Lock",
-    "unlock": "Unlock",
-    "stop": "Stop",
-    "start": "Start",
-    "pumpAttendants": "Pump attendants",
-    "totalVolume": "Total volume",
-    "totalAmount": "Total amount",
-    "successful": "Sending successful !",
-    "valid": "Submit",
-    "status": "Recipe status",
-    "edit": "Edit",
-    "disabled": "Disabled for this day.",
-    "confirmationMessage": "You are about to stop this shift before the scheduled end time. The start date of the next shift will be adjusted accordingly. Please confirm your action",
-    "confirmationTitle": "Confirm stop"
-  },
-  "fuelGrades": {
-    "PLANNED": "Planned",
-    "SUCCEDED": "Succeeded",
-    "FAILED": "Failed",
-    "WAITING_RESPONSE": "Waiting",
-    "CANCELED": "Canceled",
-    "confirmMessage": "You are about to cancel this  scheduled Update ?",
-    "listTitle": "List of fuelGrades Prices",
-    "historyTitle": "FuelGrades updates prices history",
-    "scheduledUpdatesTitle": "FuelGrades Scheduled Updates",
-    "empty": "No fuelGrades found",
-    "emptyPlanification": "No planned updates found",
-    "emptyHistory": "No history found",
-    "fuelName": "FuelGrade Name",
-    "type": "Type",
-    "update": "Update fuelGrade",
-    "oldPrice": "Old price",
-    "currentPrice": "Current Price",
-    "newPrice": "New price",
-    "plannedDate": "Planned for",
-    "executionDate": "Executed Date",
-    "scheduledDate": "Planned on",
-    "requesterName": "Planned By",
-    "status": "status",
-    "date": "Application date",
-    "price": "Price",
-    "history": "History",
-    "planification": "Scheduled updates"
-  },
-  "sheet": {
-    "title": "Amount inconsistency detected:",
-    "message": "the amount declared for this post presents an inconsistency with the amount displayed by the system. Before closing the post, do not hesitate to confirm this inconsistency by leaving a comment:",
-    "error": "Error sending :",
-    "payments": "Payments",
-    "total": "Total Sales",
-    "SOLDED": "Solded",
-    "FORCED": "Forced"
-  },
   "filter": {
     "filterBy": "Filter by",
     "cardId": "Card ID",
@@ -305,5 +117,52 @@
     "city": "City",
     "header": "Transaction Tracking",
     "text": "View the list of your fuel transactions"
+  },
+  "cardManagement": {
+    "header": "Manage my cards",
+    "subtitle": "View the list of your active cards.",
+    "topUp": "Top up a card",
+    "companyName": "Company Name",
+    "holder": "Card holder name",
+    "cardId": "Card ID",
+    "codePin": "Card PIN",
+    "holderPassword": "Holder Password",
+    "expirationDate": "Expiration date",
+    "status": "Card status",
+    "cardGroup": "Card Group",
+    "isLoading": "You don't have a card",
+    "updateStatusDialog": {
+      "title": "Update statut",
+      "desativationMessage": "Are you sure you want to deactivate this card ?",
+      "activationMessage": "Are you sure you want to activate this card ?"
+    },
+    "active": "Active",
+    "inactive": "Disabled"
+  },
+  "card": {
+    "header": "Active cards",
+    "companyName": "Company Name",
+    "holder": "Holder name",
+    "cardId": "Card ID",
+    "cardPin": "PIN code",
+    "holderPassword": "Holder Password",
+    "expirationDate": "Expiration date",
+    "statut": "Status",
+    "cardGroup": "Card Group"
+  },
+  "cardSearch": {
+    "header": "Search for a map by:",
+    "holder": "Holder",
+    "cardId": "ID",
+    "expirationDate": "Expiration date",
+    "status": "Status",
+    "filterType": {
+      "label": "Filter by",
+      "name": "Name",
+      "creator": "Creator",
+      "parent": "Parent account"
+    },
+    "filterTextLabel": "Text",
+    "search": "Search"
   }
 }

@@ -24,7 +24,7 @@ const UITableRows = <T,>({
     }
 
     if (column.render) {
-      const renderContent = column.render(row, rowIndex); // Pass both arguments
+      const renderContent = column.render(row, rowIndex);
 
       if (React.isValidElement(renderContent)) {
         return renderContent;
