@@ -1,6 +1,5 @@
+import { GeneralCard } from "common/model";
 import api from "./axios";
-import { GeneralCard, Transaction, TransactionCreteria } from "../model";
-import Transactions from "../../views/Dashboard/Transactions";
 
 const API_URL_CUSTOMER = "/customer";
 const API_URL = "/card";
@@ -71,17 +70,14 @@ export const updateCard = async (
 
 export const cardInformation = async (
   cardId: number,
-  customerId: string | undefined,
+  customerId: number,
 ): Promise<GeneralCard> => {
   const response = await api.get(
-    `${API_URL_CUSTOMER}/${customerId}${API_URL}/${cardId}/info`,
+    `${API_URL_CUSTOMER}/${customerId}${API_URL}/${cardId}`,
   );
   return response.data;
 };
-export const activateCard = async (
-  customerId: string | undefined,
-  id: string,
-) => {
+export const activateCard = async (customerId: number, id: string) => {
   const response = await api.post(
     `${API_URL_CUSTOMER}/${customerId}${API_URL}/activate/${id}`,
   );
@@ -89,38 +85,9 @@ export const activateCard = async (
   return response.data;
 };
 
-export const deactivateCard = async (
-  customerId: string | undefined,
-  id: string,
-) => {
+export const deactivateCard = async (customerId: number, id: string) => {
   const response = await api.post(
     `${API_URL_CUSTOMER}/${customerId}${API_URL}/deactivate/${id}`,
   );
-  return response.data;
-};
-export const getAllTransaction = async (
-  creteria: TransactionCreteria,
-  customerId: string | undefined,
-): Promise<{
-  content: Transaction[];
-  totalPages: number;
-  totalElements: number;
-  numberOfElements: number;
-}> => {
-  const response = await api.post(
-    `/transaction?customerId=${customerId}&page=${creteria.page}&size=${creteria.size}`,
-    {
-      cardIds: creteria.cardIds.length == 0 ? null : creteria.cardIds,
-      salePointIds:
-        creteria.salePointIds.length == 0 ? null : creteria.salePointIds,
-      productIds: creteria.productIds.length == 0 ? null : creteria.productIds,
-      ville: creteria.city.length == 0 ? null : creteria.city,
-      period: {
-        from: creteria.period.from,
-        to: creteria.period.to,
-      },
-    },
-  );
-
   return response.data;
 };

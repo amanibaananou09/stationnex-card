@@ -11,6 +11,7 @@ import { FaMoneyBillWave } from "react-icons/fa";
 import { PiHandCoinsFill } from "react-icons/pi";
 import Dashboard from "../views/Dashboard/Dashboard";
 import Transactions from "views/Dashboard/Transactions";
+import Cardes from "../views/Dashboard/Cardes";
 
 export const dashboardRoutes = (): RouteConfig[] => {
   const { t } = useTranslation();
@@ -26,7 +27,7 @@ export const dashboardRoutes = (): RouteConfig[] => {
       path: "/cardManagement",
       name: t("routes.cardManagement"),
       icon: <WalletIcon color="inherit" />,
-      //component: Transactions,
+      component: Cardes,
       layout: "/stationnex-card",
     },
     {
