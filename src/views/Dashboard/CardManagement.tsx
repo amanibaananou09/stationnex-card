@@ -25,6 +25,7 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import { useAuth } from "../../store/AuthContext";
 import UISwitch from "../../components/UI/Form/UISwitch";
 import { Scrollbars } from "react-custom-scrollbars";
+import CardsExporter from "../../components/Exporter/CardsExporter";
 
 const CardManagement = () => {
   const { customerId } = useAuth();
@@ -144,76 +145,86 @@ const CardManagement = () => {
         isOpen={isOpen}
       />
       <CardBody>
-        <Flex flexDirection="row" justifyContent="flex-start" gap="3" m="10px">
-          <Flex flexDirection="row" gap="5">
-            <Flex flexDirection="column" width="50%">
-              <Text>{t("cardSearch.filterType.label")}:</Text>
-              <Select
-                isDisabled={!customerId}
-                placeholder=""
-                value={searchType}
-                onChange={(e) => handleSearchTypeChange(e.target.value)}
-              >
-                <option value="cardId">{t("cardSearch.cardId")}</option>
-                <option value="holder">{t("cardSearch.holder")}</option>
-                <option value="actif">{t("cardSearch.status")}</option>
-                <option value="expirationDate">
-                  {t("cardSearch.expirationDate")}
-                </option>
-              </Select>
-            </Flex>
-            {searchType === "actif" && (
+        <Flex justifyContent="space-between">
+          <Flex
+            flexDirection="row"
+            justifyContent="flex-start"
+            gap="3"
+            m="10px"
+          >
+            <Flex flexDirection="row" gap="5">
               <Flex flexDirection="column" width="50%">
-                <Text>{t("cardSearch.filterTextLabel")}:</Text>
+                <Text>{t("cardSearch.filterType.label")}:</Text>
                 <Select
                   isDisabled={!customerId}
                   placeholder=""
-                  value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)}
+                  value={searchType}
+                  onChange={(e) => handleSearchTypeChange(e.target.value)}
                 >
-                  <option value="true">{t("cardManagement.active")}</option>
-                  <option value="false">{t("cardManagement.inactive")}</option>
+                  <option value="cardId">{t("cardSearch.cardId")}</option>
+                  <option value="holder">{t("cardSearch.holder")}</option>
+                  <option value="actif">{t("cardSearch.status")}</option>
+                  <option value="expirationDate">
+                    {t("cardSearch.expirationDate")}
+                  </option>
                 </Select>
               </Flex>
-            )}
-            {searchType === "expirationDate" && (
-              <Flex flexDirection="column" width="50%">
-                <Text>{t("cardSearch.filterTextLabel")}:</Text>
-                <Input
-                  isDisabled={!customerId}
-                  type="text"
-                  pattern="\d{4}-\d{2}"
-                  placeholder="yyyy-MM"
-                  value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)}
-                />
-              </Flex>
-            )}
+              {searchType === "actif" && (
+                <Flex flexDirection="column" width="50%">
+                  <Text>{t("cardSearch.filterTextLabel")}:</Text>
+                  <Select
+                    isDisabled={!customerId}
+                    placeholder=""
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                  >
+                    <option value="true">{t("cardManagement.active")}</option>
+                    <option value="false">
+                      {t("cardManagement.inactive")}
+                    </option>
+                  </Select>
+                </Flex>
+              )}
+              {searchType === "expirationDate" && (
+                <Flex flexDirection="column" width="50%">
+                  <Text>{t("cardSearch.filterTextLabel")}:</Text>
+                  <Input
+                    isDisabled={!customerId}
+                    type="text"
+                    pattern="\d{4}-\d{2}"
+                    placeholder="yyyy-MM"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                  />
+                </Flex>
+              )}
 
-            {searchType !== "actif" && searchType !== "expirationDate" && (
-              <Flex flexDirection="column" width="50%">
-                <Text>{t("cardSearch.filterTextLabel")}:</Text>
-                <Input
-                  isDisabled={!customerId}
-                  type="text"
-                  value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)}
-                />
-              </Flex>
-            )}
+              {searchType !== "actif" && searchType !== "expirationDate" && (
+                <Flex flexDirection="column" width="50%">
+                  <Text>{t("cardSearch.filterTextLabel")}:</Text>
+                  <Input
+                    isDisabled={!customerId}
+                    type="text"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                  />
+                </Flex>
+              )}
+            </Flex>
+
+            <Button
+              size="md"
+              mt="5"
+              color="white"
+              bg="blue.500"
+              isDisabled={!customerId}
+              _hover={{ bg: "blue.500" }}
+              onClick={handleSearch}
+            >
+              {t("cardSearch.search")}
+            </Button>
           </Flex>
-
-          <Button
-            size="md"
-            mt="5"
-            color="white"
-            bg="blue.500"
-            isDisabled={!customerId}
-            _hover={{ bg: "blue.500" }}
-            onClick={handleSearch}
-          >
-            {t("cardSearch.search")}
-          </Button>
+          {cards && <CardsExporter cards={cards} />}
         </Flex>
 
         <Box pb="0px">
