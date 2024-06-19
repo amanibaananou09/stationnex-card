@@ -190,9 +190,7 @@ const CardManagement = () => {
                   <Text>{t("cardSearch.filterTextLabel")}:</Text>
                   <Input
                     isDisabled={!customerId}
-                    type="text"
-                    pattern="\d{4}-\d{2}"
-                    placeholder="yyyy-MM"
+                    type="month"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                   />
