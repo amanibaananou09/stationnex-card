@@ -9,9 +9,13 @@ import { Transaction } from "../../common/model";
 
 type TransactionExporterProps = {
   transactions: Transaction[];
+  isLoading: boolean;
 };
 
-const TransactionsExporter = ({ transactions }: TransactionExporterProps) => {
+const TransactionsExporter = ({
+  transactions,
+  isLoading,
+}: TransactionExporterProps) => {
   const { t } = useTranslation();
 
   const exportToExcelHandler = () => {
@@ -48,6 +52,7 @@ const TransactionsExporter = ({ transactions }: TransactionExporterProps) => {
   const exportToPDFHandler = () => {
     const doc = new jsPDF() as any;
     const tableColumn = [
+      "Index",
       t("transactions.cardId"),
       t("transactions.period"),
       t("transactions.product"),
@@ -60,8 +65,9 @@ const TransactionsExporter = ({ transactions }: TransactionExporterProps) => {
     ];
     const tableRows: any[][] = [];
 
-    transactions.forEach((transaction) => {
+    transactions.forEach((transaction, index) => {
       const rowData = [
+        index + 1,
         transaction.cardIdentifier,
         formatDate(transaction.dateTime),
         transaction.productName,
@@ -81,23 +87,36 @@ const TransactionsExporter = ({ transactions }: TransactionExporterProps) => {
       startY: 20,
       styles: { fontSize: 5 },
     });
-
-    // Calculate the center of the page
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const titleWidth =
-      (doc.getStringUnitWidth(t("routes.transactions")) *
-        doc.internal.getFontSize()) /
-      doc.internal.scaleFactor;
-    const xOffset = (pageWidth - titleWidth) / 2;
-
-    // Center align the title
-    doc.text(t("routes.transactions"), xOffset, 10);
-
     const title = t("routes.transactions");
+
+    let isFirstPage = true;
+    const onPageAdded = (data: any) => {
+      if (isFirstPage) {
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const titleWidth =
+          (doc.getStringUnitWidth(title) * doc.internal.getFontSize()) /
+          doc.internal.scaleFactor;
+        const xOffset = (pageWidth - titleWidth) / 2;
+
+        doc.setFontSize(16);
+        doc.text(title, xOffset, 10);
+
+        doc.line(10, 15, pageWidth - 10, 15);
+
+        isFirstPage = false;
+      }
+    };
+
+    doc.autoTable({
+      head: [tableColumn],
+      body: tableRows,
+      startY: 20,
+      styles: { fontSize: 5 },
+      addPageContent: onPageAdded,
+    });
 
     doc.save(`${title}.pdf`);
   };
-
   return (
     <ButtonGroup size="sm" spacing={4}>
       <Button onClick={exportToExcelHandler}>{t("common.exportExcel")}</Button>

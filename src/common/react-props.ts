@@ -141,7 +141,8 @@ export interface AuthContextProps {
   isSignedIn: boolean;
   user: User | null;
   customerId: number;
-  signIn: (user: User, customerId: number) => void;
+  supplierId: number;
+  signIn: (user: User, customerId: number, supplierId: number) => void;
   signOut: () => void;
 }
 
