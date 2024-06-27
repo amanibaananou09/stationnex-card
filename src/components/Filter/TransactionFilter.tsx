@@ -31,10 +31,12 @@ const filterInitValue: Filter = {
 
 const TransactionFilter = ({ onChange }: TransactionFilterProps) => {
   const { customerId } = useAuth();
+  const { supplierId } = useAuth();
 
   const { cards, isLoading } = useCard(customerId);
-  const { salepoint } = useSalePoint(1);
-  const { product } = useProduct(1);
+
+  const { salepoint } = useSalePoint(Number(supplierId));
+  const { product } = useProduct(supplierId);
   const { t } = useTranslation();
 
   const [filter, setFilter] = useState<Filter>(filterInitValue);

@@ -22,13 +22,16 @@ import Pagination from "../../components/Pagination/Pagination";
 import { Transaction, TransactionCreteria } from "../../common/model";
 import { useTransaction } from "hooks/use-transaction";
 import TransactionsExporter from "../../components/Exporter/TransactionsExport";
-import TransactionFilter from "../../components/Filter/TransactionFilter";
 import { TableSkeleton } from "../../components/Skeleton/Skeletons";
 import CardHeader from "../../components/Card/CardHeader";
 import { Scrollbars } from "react-custom-scrollbars";
+import useAllTransactions from "../../hooks/use-all-transaction";
+import { useAuth } from "../../store/AuthContext";
+import TransactionFilter from "../../components/Filter/TransactionFilter";
 
 const Transactions = () => {
   const { t } = useTranslation();
+  const { customerId } = useAuth();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -42,9 +45,12 @@ const Transactions = () => {
     city: [],
   });
 
-  const { transactions, totalPages, totalElements, isLoading } =
-    useTransaction(creteria);
-
+  const { transactions, totalPages, totalElements, isLoading } = useTransaction(
+    creteria,
+  );
+  const { allTransactions, isLoading: isExportLoading } = useAllTransactions(
+    creteria,
+  );
   const columns: UIColumnDefinitionType<Transaction>[] = [
     {
       header: "#",
@@ -91,8 +97,9 @@ const Transactions = () => {
   ];
 
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
-  const [displayedColumns, setDisplayedColumns] =
-    useState<UIColumnDefinitionType<Transaction>[]>(columns);
+  const [displayedColumns, setDisplayedColumns] = useState<
+    UIColumnDefinitionType<Transaction>[]
+  >(columns);
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
@@ -111,7 +118,14 @@ const Transactions = () => {
               {t("transactions.text")}
             </Text>
           </Flex>
-          {transactions && <TransactionsExporter transactions={transactions} />}
+          {allTransactions && (
+            <Flex justifyContent="flex-end">
+              <TransactionsExporter
+                transactions={allTransactions}
+                isLoading={isExportLoading}
+              />
+            </Flex>
+          )}
         </CardHeader>
         <ColumnSelectionDropdown
           columns={columns}

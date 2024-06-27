@@ -50,10 +50,13 @@ const SignIn = () => {
     const { username, password } = values;
 
     try {
-      const { access_token, customer_id } = await login(username, password);
+      const { access_token, customer_id, supplier_id } = await login(
+        username,
+        password,
+      );
       const user = decodeToken(access_token);
 
-      signIn(user!!, customer_id);
+      signIn(user!!, customer_id, supplier_id);
     } catch (error) {
       console.error(error);
       setErrorMessage(t("signIn.messageInvalid"));

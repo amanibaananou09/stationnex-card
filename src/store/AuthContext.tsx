@@ -10,6 +10,7 @@ export const AuthContext = React.createContext<AuthContextProps>({
   isSignedIn: false,
   user: null,
   customerId: 0,
+  supplierId: 0,
   signIn: (user, customerId) => {},
   signOut: () => {},
 });
@@ -23,21 +24,32 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [customerId, setCustomerId] = useState<number>(
     Number(localStorage.getItem("customerId")) || 0,
   );
+  const [supplierId, setsupplierId] = useState<number>(
+    Number(localStorage.getItem("supplierId")) || 0,
+  );
   const isSignedIn = !!user;
 
   const { clearContext } = useESSContext();
 
-  const signInHandler = useCallback((user: User, customerId: number) => {
-    setUser(user);
-    setCustomerId(customerId || 0);
-    localStorage.setItem("customerId", String(customerId || 0));
-  }, []);
+  const signInHandler = useCallback(
+    (user: User, customerId: number, supplierId: number) => {
+      setUser(user);
+      setCustomerId(customerId || 0);
+      setsupplierId(supplierId || 0);
+      localStorage.setItem("customerId", String(customerId || 0));
+      localStorage.setItem("supplierId", String(supplierId || 0));
+    },
+    [],
+  );
 
   const signOutHandler = useCallback(() => {
     setUser(null);
     setCustomerId(0);
+    setsupplierId(0);
     localStorage.removeItem("stationnex-card");
     localStorage.removeItem("customerId");
+    localStorage.removeItem("supplierId");
+
     clearContext();
   }, []);
 
@@ -79,6 +91,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     signOut: signOutHandler,
     token: null,
     customerId: customerId,
+    supplierId: supplierId,
   };
 
   return (
