@@ -34,6 +34,7 @@
     "pumpsDispensedVolume": "Volume distribué des pompes "
   },
   "tankDeliveries": {
+    "dateTime": "Date and time of refueling",
     "header": "Livraison des réservoirs",
     "noTankDelivery": "Aucune livraison de réservoir trouvée."
   },

@@ -33,10 +33,7 @@
     "productMass": "Product mass",
     "pumpsDispensedVolume": "Pumps dispensed volume"
   },
-  "tankDeliveries": {
-    "header": "Tank delivery",
-    "noTankDelivery": "No tank deliveries found."
-  },
+
   "profile": {
     "header": " Profile information",
     "name": "User login",
