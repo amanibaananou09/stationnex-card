@@ -5,11 +5,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { PeriodFilterContextProvider } from "store/PeriodFilterContext";
 import Fuelvolume from "../../components/Charts/Fuelvolume";
+import SumfuelvolumeCard from "../../components/Charts/VolumeCard";
 
 export default function Dashboard() {
   const { t } = useTranslation();
-
+  const [selectedFilter, setSelectedFilter] = useState<string>("today");
   const [isSticky, setIsSticky] = useState(false);
+  const [fromDate, setFromDate] = useState<string>("");
+  const [toDate, setToDate] = useState<string>("");
   const stickyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -41,6 +44,14 @@ export default function Dashboard() {
     boxShadow: isSticky ? "0px 7px 23px rgba(0, 0, 0, 0.05)" : "none",
   };
 
+  const handleSearchFilters = (fromDate: string, toDate: string) => {
+    setFromDate(fromDate);
+    setToDate(toDate);
+    setSelectedFilter("");
+  };
+  const handleFilterChange = (filter: string) => {
+    setSelectedFilter(filter);
+  };
   return (
     <PeriodFilterContextProvider>
       <Flex flexDirection="column">
@@ -57,7 +68,11 @@ export default function Dashboard() {
         px={{ base: "1vw", md: "1vw", lg: "1vw" }}
       >
         <div ref={stickyRef} style={stickyStyles}>
-          <DashBoardFilter />
+          <DashBoardFilter
+            selectedFilter={selectedFilter}
+            onFilterChange={handleFilterChange}
+            onSearch={handleSearchFilters}
+          />
         </div>
 
         <Flex mt="30px">
@@ -69,7 +84,27 @@ export default function Dashboard() {
               textAlign="center"
             ></Text>
 
-            <Fuelvolume />
+            <Fuelvolume
+              periode={selectedFilter}
+              startDate={fromDate}
+              endDate={toDate}
+            />
+          </Card>
+        </Flex>
+        <Flex mt="30px">
+          <Card my="5">
+            <Text
+              color={textColor}
+              fontSize="lg"
+              fontWeight="bold"
+              textAlign="center"
+            ></Text>
+
+            <SumfuelvolumeCard
+              periode={selectedFilter}
+              startDate={fromDate}
+              endDate={toDate}
+            />
           </Card>
         </Flex>
       </Flex>

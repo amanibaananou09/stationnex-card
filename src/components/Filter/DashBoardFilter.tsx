@@ -7,36 +7,74 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { PeriodType } from "common/enums";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { usePeriod } from "store/PeriodFilterContext";
 import { truncateText } from "utils/utils";
+import moment from "moment";
 
-const DashBoardFilter = () => {
+interface FilterPeriodProps {
+  selectedFilter: string;
+  onFilterChange: (filter: string) => void;
+  onSearch: (fromDate: string, toDate: string) => void;
+}
+
+const getDefaultDates = (filter: string) => {
+  let fromDate: moment.Moment;
+  let toDate: moment.Moment;
+
+  switch (filter) {
+    case "today":
+      fromDate = moment().startOf("day");
+      toDate = moment().endOf("day");
+      break;
+    case "yesterday":
+      fromDate = moment().subtract(1, "days").startOf("day");
+      toDate = moment().subtract(1, "days").endOf("day");
+      break;
+    case "weekly":
+      fromDate = moment().startOf("isoWeek");
+      toDate = moment().endOf("isoWeek");
+      break;
+    case "monthly":
+      fromDate = moment().startOf("month");
+      toDate = moment().endOf("month");
+      break;
+    default:
+      fromDate = moment();
+      toDate = moment();
+      break;
+  }
+
+  return {
+    fromDate: fromDate.format("YYYY-MM-DDTHH:mm"),
+    toDate: toDate.format("YYYY-MM-DDTHH:mm"),
+  };
+};
+
+const DashBoardFilter = (props: FilterPeriodProps) => {
   const { t } = useTranslation();
+  const { selectedFilter, onFilterChange, onSearch } = props;
 
-  const { period, setPeriod } = usePeriod();
+  const { fromDate: defaultFromDate, toDate: defaultToDate } =
+    getDefaultDates(selectedFilter);
 
-  const [startDateTime, setStartDateTime] = useState<string>();
-  const [endDateTime, setEndDateTime] = useState<string>();
+  const [fromDate, setFromDate] = useState<string>(defaultFromDate);
+  const [toDate, setToDate] = useState<string>(defaultToDate);
 
-  const handlePeriodChange = (periodType: PeriodType) => {
-    setPeriod({ periodType });
+  const handleFilterChange = (filter: string) => {
+    const { fromDate, toDate } = getDefaultDates(filter);
+    setFromDate(fromDate);
+    setToDate(toDate);
+    onFilterChange(filter);
   };
 
-  useEffect(() => {
-    setStartDateTime(period?.startDateTime);
-    setEndDateTime(period?.endDateTime);
-  }, [period]);
-
-  const searchHandler = () => {
-    setPeriod({
-      startDateTime,
-      endDateTime,
-    });
+  const handleFromDateChange = (date: string) => setFromDate(date);
+  const handleToDateChange = (date: string) => setToDate(date);
+  const searchFilters = () => {
+    onSearch(fromDate, toDate);
   };
 
-  //styles
+  // styles
   const buttonSize = useBreakpointValue({ base: "sm", md: "md", lg: "lg" });
   const buttonFontSize = useBreakpointValue({
     base: "sm",
@@ -53,65 +91,46 @@ const DashBoardFilter = () => {
       <Flex alignItems="baseline" flexWrap="wrap" gap="3">
         <Button
           colorScheme="gray"
-          onClick={() => handlePeriodChange(PeriodType.TODAY)}
+          onClick={() => handleFilterChange("today")}
           size={buttonSize}
           fontSize={buttonFontSize}
           flex="2"
-          color={period?.periodType === PeriodType.TODAY ? "blue.500" : "black"}
+          color={selectedFilter === PeriodType.TODAY ? "blue.500" : "black"}
         >
           {truncateText(t("common.today"), truncatedButtonTextLimit)}
         </Button>
 
         <Button
           colorScheme="gray"
-          onClick={() => handlePeriodChange(PeriodType.YESTERDAY)}
+          onClick={() => handleFilterChange("yesterday")}
           size={buttonSize}
           fontSize={buttonFontSize}
           flex="2"
-          color={
-            period?.periodType === PeriodType.YESTERDAY ? "blue.500" : "black"
-          }
+          color={selectedFilter === PeriodType.YESTERDAY ? "blue.500" : "black"}
         >
           {truncateText(t("common.yesterday"), truncatedButtonTextLimit)}
         </Button>
 
         <Button
           colorScheme="gray"
-          onClick={() => handlePeriodChange(PeriodType.WEEKLY)}
+          onClick={() => handleFilterChange("weekly")}
           size={buttonSize}
           fontSize={buttonFontSize}
           flex="1"
-          color={
-            period?.periodType === PeriodType.WEEKLY ? "blue.500" : "black"
-          }
+          color={selectedFilter === PeriodType.WEEKLY ? "blue.500" : "black"}
         >
           {truncateText(t("common.weekly"), truncatedButtonTextLimit)}
         </Button>
 
         <Button
           colorScheme="gray"
-          onClick={() => handlePeriodChange(PeriodType.MONTHLY)}
+          onClick={() => handleFilterChange("monthly")}
           size={buttonSize}
           fontSize={buttonFontSize}
           flex="1"
-          color={
-            period?.periodType === PeriodType.MONTHLY ? "blue.500" : "black"
-          }
+          color={selectedFilter === PeriodType.MONTHLY ? "blue.500" : "black"}
         >
           {truncateText(t("common.monthly"), truncatedButtonTextLimit)}
-        </Button>
-
-        <Button
-          colorScheme="gray"
-          onClick={() => handlePeriodChange(PeriodType.YEARLY)}
-          size={buttonSize}
-          fontSize={buttonFontSize}
-          flex="1"
-          color={
-            period?.periodType === PeriodType.YEARLY ? "blue.500" : "black"
-          }
-        >
-          {truncateText(t("common.yearly"), truncatedButtonTextLimit)}
         </Button>
 
         <Text
@@ -119,7 +138,7 @@ const DashBoardFilter = () => {
           fontSize={{ sm: "sm", md: "lg" }}
           fontWeight="bold"
           textAlign="center"
-          color="#FFFFFF"
+          color="black"
         >
           {t("common.from")} :
         </Text>
@@ -127,8 +146,8 @@ const DashBoardFilter = () => {
         <Box>
           <Input
             type="datetime-local"
-            value={startDateTime ?? period?.startDateTime}
-            onChange={(e) => setStartDateTime(e.target.value)}
+            value={fromDate}
+            onChange={(e) => handleFromDateChange(e.target.value)}
             bg="white"
             size={useBreakpointValue({ base: "xs", md: "md" })}
           />
@@ -139,7 +158,7 @@ const DashBoardFilter = () => {
           fontSize={{ sm: "sm", md: "lg" }}
           fontWeight="bold"
           textAlign="center"
-          color="#FFFFFF"
+          color="black"
         >
           {t("common.to")} :
         </Text>
@@ -147,15 +166,15 @@ const DashBoardFilter = () => {
         <Box>
           <Input
             type="datetime-local"
-            value={endDateTime ?? period?.endDateTime}
-            onChange={(e) => setEndDateTime(e.target.value)}
+            value={toDate}
+            onChange={(e) => handleToDateChange(e.target.value)}
             bg="white"
             size={useBreakpointValue({ base: "xs", md: "md" })}
           />
         </Box>
 
         <Button
-          onClick={searchHandler}
+          onClick={searchFilters}
           colorScheme="telegram"
           size={buttonSize}
         >
