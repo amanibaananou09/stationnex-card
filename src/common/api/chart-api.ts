@@ -8,9 +8,13 @@ export const getChartByFuelCartPeriod = async (
   endDate: string,
   customerId: number,
 ) => {
-  const response = await api.get(
-    `${API_URL}/chart?customerId=${customerId}&period=${periode}&startDate=${startDate}&endDate=${endDate}`,
-  );
+  let url = `${API_URL}/chart?customerId=${customerId}&startDate=${startDate}&endDate=${endDate}`;
+
+  if (periode) {
+    url += `&period=${periode}`;
+  }
+
+  const response = await api.get(url);
 
   return response.data;
 };
@@ -21,13 +25,13 @@ export const getdailyChart = async (
   endDate: string,
   customerId: number,
 ) => {
-  console.log(
-    `Calling API: ${API_URL}/dailyChart?customerId=${customerId}&period=${periode}&startDate=${startDate}&endDate=${endDate}`,
-  );
+  let url = `${API_URL}/dailyChart?customerId=${customerId}&startDate=${startDate}&endDate=${endDate}`;
 
-  const response = await api.get(
-    `${API_URL}/dailyChart?customerId=${customerId}&period=${periode}&startDate=${startDate}&endDate=${endDate}`,
-  );
+  if (periode) {
+    url += `&period=${periode}`;
+  }
+
+  const response = await api.get(url);
 
   return response.data;
 };
