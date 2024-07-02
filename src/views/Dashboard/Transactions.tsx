@@ -53,11 +53,6 @@ const Transactions = () => {
   );
   const columns: UIColumnDefinitionType<Transaction>[] = [
     {
-      header: "#",
-      key: "#",
-      render: (item, index) => <div>{index + 1}</div>,
-    },
-    {
       header: t("transactions.cardId"),
       key: "cardIdentifier",
     },
