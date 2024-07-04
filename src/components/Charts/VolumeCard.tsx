@@ -108,6 +108,20 @@ const VolumeCard = ({ periode, startDate, endDate }: PeriodeProps) => {
     },
     xaxis: {
       categories: categories,
+      axisBorder: {
+        show: true,
+        color: "#000000",
+      },
+      axisTicks: {
+        show: true,
+        color: "#000000",
+        height: 6,
+      },
+      labels: {
+        style: {
+          colors: "#000000",
+        },
+      },
     },
     yaxis: {},
     fill: {

@@ -115,10 +115,20 @@ const FuelvolumeCart = ({ periode, startDate, endDate }: PeriodeProps) => {
       labels: {
         style: {
           fontSize: "12px",
+          colors: "#000000",
         },
         offsetY: 0,
       },
       categories: chartData.categories,
+      axisBorder: {
+        show: true,
+        color: "#000000",
+      },
+      axisTicks: {
+        show: true,
+        color: "#000000",
+        height: 6,
+      },
     },
     yaxis: {
       title: {
