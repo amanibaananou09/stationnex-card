@@ -1,6 +1,6 @@
 import { DecodedToken, PlanningExecution, User } from "common/model";
 import jwt_decode from "jwt-decode";
-import { chain, debounce } from "lodash";
+import { chain } from "lodash";
 
 import moment, { Moment } from "moment";
 
@@ -51,7 +51,20 @@ export const formatDate = (dateTimeStart: string): string => {
 };
 
 export const formatNumber = (value: number) => {
+  return Number(value).toLocaleString("fr-FR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+};
+export const formatNumbeer = (value: number) => {
   return parseFloat(value.toFixed(2));
+};
+export const formatAmount = (value: number) => {
+  const locale = "en-US";
+  return value.toLocaleString(locale, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
 };
 
 export const getColorForTankLevel = (level: number): string => {
@@ -125,17 +138,14 @@ export function groupBy<T extends Record<string, any>>(
   if (!array) {
     return {};
   }
-  return array.reduce(
-    (result, obj) => {
-      const groupKey = obj[key];
-      if (!result[groupKey]) {
-        result[groupKey] = [];
-      }
-      result[groupKey].push(obj);
-      return result;
-    },
-    {} as Record<string, T[]>,
-  );
+  return array.reduce((result, obj) => {
+    const groupKey = obj[key];
+    if (!result[groupKey]) {
+      result[groupKey] = [];
+    }
+    result[groupKey].push(obj);
+    return result;
+  }, {} as Record<string, T[]>);
 }
 
 export const isToday = (day: string | Moment) => {

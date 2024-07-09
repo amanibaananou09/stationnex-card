@@ -4,7 +4,7 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { useTranslation } from "react-i18next";
 import * as XLSX from "xlsx";
-import { formatDate, formatNumber } from "../../utils/utils";
+import { formatAmount, formatDate, formatNumbeer } from "../../utils/utils";
 import { Transaction } from "../../common/model";
 
 type TransactionExporterProps = {
@@ -32,12 +32,12 @@ const TransactionsExporter = ({
         city,
       }) => ({
         [t("transactions.cardId")]: cardIdentifier,
-        [t("transactions.period")]: dateTime,
+        [t("transactions.period")]: formatDate(dateTime),
         [t("transactions.product")]: productName,
-        [t("transactions.price")]: price,
-        [t("transactions.volume")]: quantity,
-        [t("transactions.amount")]: amount,
-        [t("transactions.volumeRemaining")]: availableBalance,
+        [t("transactions.price")]: formatAmount(price),
+        [t("transactions.volume")]: formatNumbeer(quantity),
+        [t("transactions.amount")]: formatAmount(amount),
+        [t("transactions.volumeRemaining")]: formatNumbeer(availableBalance),
         [t("transactions.station")]: salePointName,
         [t("transactions.city")]: city,
       }),
@@ -71,21 +71,14 @@ const TransactionsExporter = ({
         transaction.cardIdentifier,
         formatDate(transaction.dateTime),
         transaction.productName,
-        transaction.price,
-        formatNumber(transaction.quantity),
-        transaction.amount,
-        transaction.availableBalance,
+        formatAmount(transaction.price),
+        formatNumbeer(transaction.quantity),
+        formatAmount(transaction.amount),
+        formatNumbeer(transaction.availableBalance),
         transaction.salePointName,
         transaction.city,
       ];
       tableRows.push(rowData);
-    });
-
-    doc.autoTable({
-      head: [tableColumn],
-      body: tableRows,
-      startY: 20,
-      styles: { fontSize: 5 },
     });
     const title = t("routes.transactions");
 
@@ -117,6 +110,7 @@ const TransactionsExporter = ({
 
     doc.save(`${title}.pdf`);
   };
+
   return (
     <ButtonGroup size="sm" spacing={4}>
       <Button onClick={exportToExcelHandler}>{t("common.exportExcel")}</Button>
