@@ -21,6 +21,7 @@ const VolumeCard = ({ periode, startDate, endDate }: PeriodeProps) => {
 
         const chartData: { [key: string]: number[] } = {};
         const cardIdentifiers: string[] = [];
+        const allDates: string[] = [];
 
         data.forEach(
           (entry: { cardIdentifier: string; sum: number; date: string }) => {
@@ -28,10 +29,20 @@ const VolumeCard = ({ periode, startDate, endDate }: PeriodeProps) => {
               cardIdentifiers.push(entry.cardIdentifier);
             }
 
-            if (!chartData[entry.date]) {
-              chartData[entry.date] = new Array(cardIdentifiers.length).fill(0);
+            if (!allDates.includes(entry.date)) {
+              allDates.push(entry.date);
             }
+          },
+        );
 
+        allDates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+
+        allDates.forEach((date) => {
+          chartData[date] = new Array(cardIdentifiers.length).fill(0);
+        });
+
+        data.forEach(
+          (entry: { cardIdentifier: string; sum: number; date: string }) => {
             const cardIndex = cardIdentifiers.indexOf(entry.cardIdentifier);
             chartData[entry.date][cardIndex] = entry.sum;
           },
@@ -39,12 +50,10 @@ const VolumeCard = ({ periode, startDate, endDate }: PeriodeProps) => {
 
         const seriesData = cardIdentifiers.map((identifier, index) => ({
           name: `${identifier}`,
-          data: Object.keys(chartData).map((date) => chartData[date][index]),
+          data: allDates.map((date) => chartData[date][index]),
         }));
 
-        const dates = Object.keys(chartData);
-
-        setCategories(dates);
+        setCategories(allDates);
         setSeries(seriesData);
       } catch (error) {
         console.error("Error fetching chart data:", error);
