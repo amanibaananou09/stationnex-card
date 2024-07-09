@@ -28,6 +28,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import useAllTransactions from "../../hooks/use-all-transaction";
 import { useAuth } from "../../store/AuthContext";
 import TransactionFilter from "../../components/Filter/TransactionFilter";
+import { formatAmount, formatDate, formatNumber } from "../../utils/utils";
 
 const Transactions = () => {
   const { t } = useTranslation();
@@ -59,6 +60,7 @@ const Transactions = () => {
     {
       header: t("transactions.period"),
       key: "dateTime",
+      render: (tr) => formatDate(tr.dateTime),
     },
     {
       header: t("transactions.product"),
@@ -67,19 +69,22 @@ const Transactions = () => {
     {
       header: t("transactions.price"),
       key: "price",
+      render: (tr) => formatAmount(tr.price),
     },
     {
       header: t("transactions.volume"),
       key: "quantity",
+      render: (tr) => formatNumber(tr.quantity),
     },
     {
       header: t("transactions.amount"),
       key: "amount",
+      render: (tr) => formatAmount(tr.amount),
     },
     {
       header: t("transactions.volumeRemaining"),
       key: "availableBalance",
-      render: (tr) => tr.availableBalance || "-",
+      render: (tr) => formatNumber(tr.availableBalance) || "-",
     },
     {
       header: t("transactions.station"),
