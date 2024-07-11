@@ -15,7 +15,7 @@ import CardBody from "components/Card/CardBody";
 import ColumnSelectionDropdown from "components/ColumnSelector/ColumnSelector";
 import { UIColumnDefinitionType } from "components/UI/Table/Types";
 import UITable from "components/UI/Table/UITable";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaEllipsisV } from "react-icons/fa";
 import Pagination from "../../components/Pagination/Pagination";
@@ -46,12 +46,10 @@ const Transactions = () => {
     city: [],
   });
 
-  const { transactions, totalPages, totalElements, isLoading } = useTransaction(
-    creteria,
-  );
-  const { allTransactions, isLoading: isExportLoading } = useAllTransactions(
-    creteria,
-  );
+  const { transactions, totalPages, totalElements, isLoading } =
+    useTransaction(creteria);
+  const { allTransactions, isLoading: isExportLoading } =
+    useAllTransactions(creteria);
   const columns: UIColumnDefinitionType<Transaction>[] = [
     {
       header: t("transactions.cardId"),
@@ -97,10 +95,16 @@ const Transactions = () => {
   ];
 
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
-  const [displayedColumns, setDisplayedColumns] = useState<
-    UIColumnDefinitionType<Transaction>[]
-  >(columns);
+  const [displayedColumns, setDisplayedColumns] =
+    useState<UIColumnDefinitionType<Transaction>[]>(columns);
 
+  useEffect(() => {
+    setDisplayedColumns(
+      visibleColumns.length > 0
+        ? columns.filter((col) => visibleColumns.includes(col.key as string))
+        : columns,
+    );
+  }, [columns, visibleColumns]);
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
       <Card pb="0px">

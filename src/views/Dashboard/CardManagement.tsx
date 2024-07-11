@@ -110,6 +110,15 @@ const CardManagement = () => {
   const [invisibleColumns, setInvisibleColumns] = useState<string[]>([]);
   const [showColumns, setShowColumns] =
     useState<UIColumnDefinitionType<GeneralCard>[]>(columns);
+
+  useEffect(() => {
+    setShowColumns(
+      invisibleColumns.length > 0
+        ? columns.filter((col) => invisibleColumns.includes(col.key as string))
+        : columns,
+    );
+  }, [columns, invisibleColumns]);
+
   //search
   const handleSearchTypeChange = (value: string) => {
     setSearchType(value);
