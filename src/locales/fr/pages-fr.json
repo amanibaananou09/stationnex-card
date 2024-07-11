@@ -8,10 +8,9 @@
     "allFuelGrades": "Toutes les carburants",
     "allPumps": "Toutes les pompes"
   },
-  "tankLevelChart": {
-    "changedVolume": "Volume changé",
-    "tankVolume": "Volume du réservoir",
-    "nodata": "Pas de données à afficher..."
+  "fuelVolume": {
+    "idCard": "IDs des cartes",
+    "volume": "Volume de carburant consommé"
   },
   "pumpSales": {
     "totalSales": "Total des ventes",
@@ -116,7 +115,7 @@
     "amount": "Montant",
     "volumeRemaining": "Volume restant (Litres)",
     "station": "Point de vente",
-    "ville": "Ville",
+    "city": "Ville",
     "header": "Suivi des transactions",
     "text": "Consultez la liste de vos transactions de carburant."
   },

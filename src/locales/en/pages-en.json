@@ -8,10 +8,9 @@
     "allFuelGrades": "All fuel grades",
     "allPumps": "All pumps"
   },
-  "tankLevelChart": {
-    "changedVolume": "Changed volume",
-    "tankVolume": "Tank volume",
-    "nodata": "No data to display for this chart..."
+  "fuelVolume": {
+    "idCard": "Card IDs",
+    "volume": "Volume of fuel consumed"
   },
   "pumpSales": {
     "totalSales": "Total sales",

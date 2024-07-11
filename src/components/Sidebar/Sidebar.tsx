@@ -270,7 +270,7 @@ export const SidebarResponsive: FC<SidebarProps> = (props) => {
   let activeColor = "gray.700";
   let inactiveColor = "gray.400";
   let sidebarActiveShadow = "0px 7px 11px rgba(0, 0, 0, 0.04)";
-  let sidebarBackgroundColor = "#212D76";
+  let sidebarBackgroundColor = "#012249";
 
   const createLinks = (routes: any) => {
     const routesArray = Object.values(routes);
