@@ -34,8 +34,8 @@
   },
   "tankDeliveries": {
     "dateTime": "Date and time of refueling",
-    "header": "Livraison des réservoirs",
-    "noTankDelivery": "Aucune livraison de réservoir trouvée."
+    "header": "Mesures des réservoirs",
+    "noTankDelivery": "Aucune mesures des réservoirs trouvée."
   },
   "profile": {
     "header": "Détails du profil",
