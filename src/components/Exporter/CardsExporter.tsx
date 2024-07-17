@@ -15,7 +15,8 @@ const CardsExporter = ({ cards }: CardExporterProps) => {
 
   const exportToExcelHandler = () => {
     const data = cards.map(
-      ({ cardId, holder, cardGroupName, expirationDate }) => ({
+      ({ cardId, holder, cardGroupName, expirationDate }, index) => ({
+        "#": index + 1,
         [t("card.cardId")]: cardId,
         [t("card.holder")]: holder,
         [t("card.cardGroup")]: cardGroupName,
@@ -25,13 +26,15 @@ const CardsExporter = ({ cards }: CardExporterProps) => {
 
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
+    const title = t("routes.cardManagement");
     XLSX.utils.book_append_sheet(wb, ws, "Cards");
-    XLSX.writeFile(wb, "cards.xlsx");
+    XLSX.writeFile(wb, `${title}.xlsx`);
   };
 
   const exportToPDFHandler = () => {
     const doc = new jsPDF() as any;
     const tableColumn = [
+      "#",
       t("card.cardId"),
       t("card.holder"),
       t("card.cardGroup"),
@@ -39,8 +42,9 @@ const CardsExporter = ({ cards }: CardExporterProps) => {
     ];
     const tableRows: any[][] = [];
 
-    cards.forEach((card) => {
+    cards.forEach((card, index) => {
       const rowData = [
+        index + 1,
         card.cardId,
         card.holder,
         card.cardGroupName,

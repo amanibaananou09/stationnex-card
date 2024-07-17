@@ -3,8 +3,10 @@ import ReactApexChart from "react-apexcharts";
 import { PeriodeProps } from "../../common/react-props";
 import { useAuth } from "../../store/AuthContext";
 import { getChartByFuelCartPeriod } from "../../common/api/chart-api";
+import { useTranslation } from "react-i18next";
 
 const FuelvolumeCart = ({ periode, startDate, endDate }: PeriodeProps) => {
+  const { t } = useTranslation();
   const [chartData, setChartData] = useState<{
     series: any[];
     categories: string[];
@@ -33,7 +35,6 @@ const FuelvolumeCart = ({ periode, startDate, endDate }: PeriodeProps) => {
     const seriesData: { [key: string]: { [key: string]: number } } = {};
     const categories: Set<string> = new Set();
 
-    // Collect data and cardIdentifiers
     data.forEach((transaction) => {
       if (!seriesData[transaction.fuelGrade]) {
         seriesData[transaction.fuelGrade] = {};
@@ -110,7 +111,7 @@ const FuelvolumeCart = ({ periode, startDate, endDate }: PeriodeProps) => {
     },
     xaxis: {
       title: {
-        text: "IDs des cartes",
+        text: t("fuelVolume.idCard"),
       },
       labels: {
         style: {
@@ -132,7 +133,7 @@ const FuelvolumeCart = ({ periode, startDate, endDate }: PeriodeProps) => {
     },
     yaxis: {
       title: {
-        text: "Volume de carburant consommé",
+        text: t("fuelVolume.volume"),
       },
     },
     fill: {
