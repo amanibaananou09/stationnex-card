@@ -4,7 +4,11 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { useTranslation } from "react-i18next";
 import * as XLSX from "xlsx";
-import { formatAmount, formatDate, formatNumbeer } from "../../utils/utils";
+import {
+  formatDate,
+  formatNumbeer,
+  formatNumberByCountryCode,
+} from "../../utils/utils";
 import { Transaction } from "../../common/model";
 
 type TransactionExporterProps = {
@@ -20,29 +24,47 @@ const TransactionsExporter = ({
 
   const exportToExcelHandler = () => {
     const data = transactions.map(
-      ({
-        cardIdentifier,
-        dateTime,
-        productName,
-        price,
-        quantity,
-        amount,
-        availableBalance,
-        salePointName,
-        city,
-      }) => ({
-        [t("transactions.cardId")]: cardIdentifier,
-        [t("transactions.period")]: formatDate(dateTime),
-        [t("transactions.product")]: productName,
-        [t("transactions.price")]: formatAmount(price),
-        [t("transactions.volume")]: formatNumbeer(quantity),
-        [t("transactions.amount")]: formatAmount(amount),
-        [t("transactions.volumeRemaining")]: formatNumbeer(availableBalance),
-        [t("transactions.station")]: salePointName,
-        [t("transactions.city")]: city,
-      }),
-    );
+      (
+        {
+          cardIdentifier,
+          dateTime,
+          productName,
+          price,
+          quantity,
+          amount,
+          availableBalance,
+          salePointName,
+          city,
+          salePoint,
+        },
+        index,
+      ) => {
+        const countryCode = salePoint?.country?.code || "USD";
 
+        return {
+          Index: index + 1,
+          [t("transactions.cardId")]: cardIdentifier,
+          [t("transactions.period")]: formatDate(dateTime),
+          [t("transactions.product")]: productName,
+          [t("transactions.price")]: formatNumberByCountryCode(
+            price,
+            countryCode,
+            true,
+            true,
+          ),
+          [t("transactions.volume")]: formatNumbeer(quantity),
+          [t("transactions.amount")]: formatNumberByCountryCode(
+            amount,
+            countryCode,
+            true,
+            true,
+          ),
+          [t("transactions.volumeRemaining")]: formatNumbeer(availableBalance),
+          [t("transactions.station")]: salePointName,
+          [t("transactions.city")]: city,
+        };
+      },
+    );
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Transactions");
@@ -66,14 +88,25 @@ const TransactionsExporter = ({
     const tableRows: any[][] = [];
 
     transactions.forEach((transaction, index) => {
+      const countryCode = transaction.salePoint?.country?.code || "USD";
       const rowData = [
         index + 1,
         transaction.cardIdentifier,
         formatDate(transaction.dateTime),
         transaction.productName,
-        formatAmount(transaction.price),
+        formatNumberByCountryCode(
+          transaction.price,
+          countryCode,
+          true,
+          true,
+        ).replace(/\s/g, "\u00A0"),
         formatNumbeer(transaction.quantity),
-        formatAmount(transaction.amount),
+        formatNumberByCountryCode(
+          transaction.amount,
+          countryCode,
+          true,
+          true,
+        ).replace(/\s/g, "\u00A0"),
         formatNumbeer(transaction.availableBalance),
         transaction.salePointName,
         transaction.city,
