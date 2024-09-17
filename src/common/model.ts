@@ -41,21 +41,6 @@ export interface CurrentFirmwareInformation {
   modificationDate: string;
 }
 
-export interface Transaction {
-  id: string;
-  pump: string;
-  fuelGradeName: string;
-  volume: number;
-  volumeOperator: string;
-  price: number;
-  tag: string;
-  amount: number;
-  totalVolume: number;
-  totalAmount: number;
-  dateTimeStart: string;
-  pumpAttendantName: string;
-}
-
 export interface TransactionCreteria extends Filter {
   page: number;
   size: number;
@@ -499,6 +484,7 @@ export interface Transaction {
   productId: number;
   quantity: number;
   amount: number;
+  salePoint: SalePoint;
   salePointName: string;
   address: string;
   availableBalance: number;
@@ -539,6 +525,7 @@ export interface SalePoint {
   id?: number;
   name?: string;
   countryName?: string;
+  country: Country;
   city?: string;
   area?: string;
   actif?: boolean;

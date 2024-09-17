@@ -26,13 +26,15 @@ import { TableSkeleton } from "../../components/Skeleton/Skeletons";
 import CardHeader from "../../components/Card/CardHeader";
 import { Scrollbars } from "react-custom-scrollbars";
 import useAllTransactions from "../../hooks/use-all-transaction";
-import { useAuth } from "../../store/AuthContext";
 import TransactionFilter from "../../components/Filter/TransactionFilter";
-import { formatAmount, formatDate, formatNumber } from "../../utils/utils";
+import {
+  formatDate,
+  formatNumber,
+  formatNumberByCountryCode,
+} from "../../utils/utils";
 
 const Transactions = () => {
   const { t } = useTranslation();
-  const { customerId } = useAuth();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -46,10 +48,12 @@ const Transactions = () => {
     city: [],
   });
 
-  const { transactions, totalPages, totalElements, isLoading } =
-    useTransaction(creteria);
-  const { allTransactions, isLoading: isExportLoading } =
-    useAllTransactions(creteria);
+  const { transactions, totalPages, totalElements, isLoading } = useTransaction(
+    creteria,
+  );
+  const { allTransactions, isLoading: isExportLoading } = useAllTransactions(
+    creteria,
+  );
   const columns: UIColumnDefinitionType<Transaction>[] = [
     {
       header: t("transactions.cardId"),
@@ -67,7 +71,10 @@ const Transactions = () => {
     {
       header: t("transactions.price"),
       key: "price",
-      render: (tr) => formatAmount(tr.price),
+      render: (tr) => {
+        const countryCode = tr.salePoint?.country?.code || "USD";
+        return formatNumberByCountryCode(tr.price, countryCode, true, true);
+      },
     },
     {
       header: t("transactions.volume"),
@@ -77,7 +84,10 @@ const Transactions = () => {
     {
       header: t("transactions.amount"),
       key: "amount",
-      render: (tr) => formatAmount(tr.amount),
+      render: (tr) => {
+        const countryCode = tr.salePoint?.country?.code || "USD";
+        return formatNumberByCountryCode(tr.amount, countryCode, true, true);
+      },
     },
     {
       header: t("transactions.volumeRemaining"),
@@ -95,8 +105,9 @@ const Transactions = () => {
   ];
 
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
-  const [displayedColumns, setDisplayedColumns] =
-    useState<UIColumnDefinitionType<Transaction>[]>(columns);
+  const [displayedColumns, setDisplayedColumns] = useState<
+    UIColumnDefinitionType<Transaction>[]
+  >(columns);
 
   useEffect(() => {
     setDisplayedColumns(
