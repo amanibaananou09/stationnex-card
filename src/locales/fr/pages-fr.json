@@ -96,7 +96,6 @@
     "continue": "Continuer",
     "alertSuccess": "Mot de passe réinitialisé avec succès ! "
   },
-
   "filter": {
     "filterBy": "Filtrer par",
     "cardId": "ID carte",
@@ -114,6 +113,8 @@
     "volume": "Volume",
     "amount": "Montant",
     "volumeRemaining": "Volume restant (Litres)",
+    "remainingBalance": "Solde restant total",
+    "remainingBalancePerProduct": "Solde restant par produit",
     "station": "Point de vente",
     "city": "Ville",
     "header": "Suivi des transactions",

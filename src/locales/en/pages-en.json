@@ -32,7 +32,6 @@
     "productMass": "Product mass",
     "pumpsDispensedVolume": "Pumps dispensed volume"
   },
-
   "profile": {
     "header": " Profile information",
     "name": "User login",
@@ -109,6 +108,8 @@
     "volume": "Volume",
     "amount": "Amount",
     "volumeRemaining": "Remaining volume (Liters)",
+    "remainingBalance": "Total remaining balance",
+    "remainingBalancePerProduct": "Remaining balance per product",
     "station": "Point of sale",
     "city": "City",
     "header": "Transaction Tracking",
