@@ -97,6 +97,13 @@ export function formatNumberByCountryCode(
   withCurrency: boolean = true,
   withAmount: boolean = true,
 ) {
+  const isInteger = (value: number | bigint) => {
+    if (typeof value === "bigint") {
+      return true;
+    }
+    return value % 1 === 0;
+  };
+
   if (!countryCode) {
     return new Intl.NumberFormat("en-US", {
       style: withCurrency ? "currency" : "decimal",
