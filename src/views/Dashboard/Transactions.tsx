@@ -37,6 +37,7 @@ const Transactions = () => {
   const { t } = useTranslation();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [countryCode, setCountryCode] = useState<string>("USD"); // Default country code
 
   const [creteria, setCreteria] = useState<TransactionCreteria>({
     page: 0,
@@ -51,6 +52,15 @@ const Transactions = () => {
   const { transactions, totalPages, totalElements, isLoading } = useTransaction(
     creteria,
   );
+  useEffect(() => {
+    if (transactions && transactions.length > 0) {
+      // Set the country code from the first transaction's sale point
+      const firstTransactionCountryCode =
+        transactions[0]?.salePoint?.country?.code || "USD";
+      setCountryCode(firstTransactionCountryCode);
+    }
+  }, [transactions]);
+
   const { allTransactions, isLoading: isExportLoading } = useAllTransactions(
     creteria,
   );
@@ -69,11 +79,16 @@ const Transactions = () => {
       key: "productName",
     },
     {
-      header: t("transactions.price"),
+      header: `${t("transactions.price")} (${formatNumberByCountryCode(
+        0,
+        countryCode,
+        true,
+        false,
+      )})`,
       key: "price",
       render: (tr) => {
         const countryCode = tr.salePoint?.country?.code || "USD";
-        return formatNumberByCountryCode(tr.price, countryCode, true, true);
+        return formatNumberByCountryCode(tr.price, countryCode, false, true);
       },
     },
     {
@@ -82,17 +97,71 @@ const Transactions = () => {
       render: (tr) => formatNumber(tr.quantity),
     },
     {
-      header: t("transactions.amount"),
+      header: `${t("transactions.amount")} (${formatNumberByCountryCode(
+        0,
+        countryCode,
+        true,
+        false,
+      )})`,
       key: "amount",
       render: (tr) => {
         const countryCode = tr.salePoint?.country?.code || "USD";
-        return formatNumberByCountryCode(tr.amount, countryCode, true, true);
+        return formatNumberByCountryCode(tr.amount, countryCode, false, true);
       },
     },
     {
-      header: t("transactions.volumeRemaining"),
+      header: `${t(
+        "transactions.remainingBalance",
+      )} (${formatNumberByCountryCode(0, countryCode, true, false)})`,
       key: "availableBalance",
-      render: (tr) => formatNumber(tr.availableBalance) || "-",
+      render: (tr) =>
+        tr.availableBalance === 0 || tr.availableBalance === null
+          ? "-"
+          : formatNumber(tr.availableBalance),
+    },
+    {
+      header: t("transactions.volumeRemaining"),
+      key: "availableVolume",
+      render: (tr) =>
+        tr.availableVolume === 0 || tr.availableVolume === null
+          ? "-"
+          : formatNumberByCountryCode(
+              tr.availableVolume,
+              tr.salePoint?.country?.code || "USD",
+              false,
+              true,
+            ),
+    },
+    {
+      header: `${t(
+        "transactions.remainingBalancePerProduct",
+      )} (${formatNumberByCountryCode(0, countryCode, true, false)})`,
+      key: "remainingBalancePerProduct",
+      render: (tr) => (
+        <>
+          {Object.entries(tr.remainingBalancePerProduct || {}).map(
+            ([productName, remainingBalance]) => (
+              <Box
+                key={productName}
+                width="300px"
+                p="8px"
+                bg="gray.300"
+                boxShadow="sm"
+              >
+                {productName}:{" "}
+                {remainingBalance === 0 || remainingBalance === null
+                  ? "-"
+                  : formatNumberByCountryCode(
+                      remainingBalance,
+                      tr.salePoint?.country?.code || "USD",
+                      false,
+                      true,
+                    )}
+              </Box>
+            ),
+          )}
+        </>
+      ),
     },
     {
       header: t("transactions.station"),
@@ -171,7 +240,7 @@ const Transactions = () => {
                   <>
                     {!isLoading && transactions && transactions.length > 0 ? (
                       <Scrollbars
-                        autoHide
+                        autoHide={false}
                         style={{ height: "calc(100vh - 185px)" }}
                       >
                         <UITable
