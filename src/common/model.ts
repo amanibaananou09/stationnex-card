@@ -475,6 +475,7 @@ export interface PriceModificationRequestCreteria {
 }
 
 export interface Transaction {
+  remainingBalancePerProduct: { [productName: string]: number };
   id: string;
   cardId: string;
   dateTime: string;
@@ -488,6 +489,7 @@ export interface Transaction {
   salePointName: string;
   address: string;
   availableBalance: number;
+  availableVolume: number;
   cardIdentifier: string;
 }
 
