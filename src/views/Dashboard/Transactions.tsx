@@ -139,26 +139,44 @@ const Transactions = () => {
       key: "remainingBalancePerProduct",
       render: (tr) => (
         <>
-          {Object.entries(tr.remainingBalancePerProduct || {}).map(
-            ([productName, remainingBalance]) => (
-              <Box
-                key={productName}
-                width="300px"
-                p="8px"
-                bg="gray.300"
-                boxShadow="sm"
-              >
-                {productName}:{" "}
-                {remainingBalance === 0 || remainingBalance === null
-                  ? "-"
-                  : formatNumberByCountryCode(
-                      remainingBalance,
-                      tr.salePoint?.country?.code || "USD",
-                      false,
-                      true,
-                    )}
+          {Object.entries(tr.remainingBalancePerProduct || {}).length > 0 ? (
+            <Box as="table" width="300px">
+              <Box as="tbody">
+                {Object.entries(tr.remainingBalancePerProduct).map(
+                  ([productName, remainingBalance]) => (
+                    <Box as="tr" key={productName}>
+                      <Box
+                        as="td"
+                        fontWeight="bold"
+                        fontSize="small"
+                        padding="8px"
+                        borderBottom="1px solid #ddd"
+                      >
+                        {productName}
+                      </Box>
+
+                      <Box
+                        as="td"
+                        textAlign="right"
+                        fontSize="small"
+                        padding="8px"
+                        borderBottom="1px solid #ddd"
+                      >
+                        {remainingBalance === 0 || remainingBalance === null
+                          ? "-"
+                          : formatNumberByCountryCode(
+                              remainingBalance,
+                              tr.salePoint?.country?.code || "USD",
+                              false,
+                            )}
+                      </Box>
+                    </Box>
+                  ),
+                )}
               </Box>
-            ),
+            </Box>
+          ) : (
+            "-"
           )}
         </>
       ),
