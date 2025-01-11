@@ -96,15 +96,6 @@ pipelines:
       - step: *install-dependencies
       - step: *build-and-test
       - step: *quality
-    master:
-      - step: *install-dependencies
-      - step: *build-and-test
-      - step: *quality
-      - step: *build-docker-image
-      - step:
-          <<: *deploy-container
-          name: Deploy to Preprod
-          deployment: preprod
   tags:
     '*':
       - step: *install-dependencies
@@ -123,3 +114,11 @@ pipelines:
           <<: *deploy-container
           name: Deploy to Formation
           deployment: formation
+    deploy-to-preprod:
+      - step: *install-dependencies
+      - step: *build-and-test
+      - step: *build-docker-image
+      - step:
+          <<: *deploy-container
+          name: Deploy to Preprod
+          deployment: preprod
