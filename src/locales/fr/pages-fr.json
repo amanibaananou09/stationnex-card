@@ -75,7 +75,8 @@
     "placeholderPassword": "Entrez votre mot de passe",
     "messageInvalid": "Nom d'utilisateur ou mot de passe incorrect.",
     "forgotPassword": "Mot de passe oublié ?",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "messageInvalidCustomer": "Votre compte n'est pas autorisé à se connecter."
   },
   "ForgotPassword": {
     "errorVide": "Veuillez entrer votre adresse e-mail.",

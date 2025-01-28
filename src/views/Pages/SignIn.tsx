@@ -54,6 +54,12 @@ const SignIn = () => {
         username,
         password,
       );
+
+      if (customer_id === null) {
+        setErrorMessage(t("signIn.messageInvalidCustomer"));
+        return;
+      }
+
       const user = decodeToken(access_token);
 
       signIn(user!!, customer_id, supplier_id);
@@ -74,15 +80,10 @@ const SignIn = () => {
       justifySelf="center"
       overflow="hidden"
     >
-      <Flex
-        justifyContent="flex-end"
-        alignItems="flex"
-        marginTop="15px"
-        marginRight="10"
-      >
+      <Flex position="absolute" top="30px" right="100px" zIndex="10">
         <LanguageSelector />
       </Flex>
-      <Flex justifyContent="flex-start" alignItems="flex" marginRight="10">
+      <Flex position="absolute" top="30px" left="150px" zIndex="100">
         <Text
           fontSize="2xl"
           fontWeight="sans-serif"
@@ -97,7 +98,7 @@ const SignIn = () => {
         textAlign="center"
         justifyContent="center"
         align="center"
-        mt="50px"
+        mt="80px"
         mb="30px"
       >
         <img
