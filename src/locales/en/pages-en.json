@@ -70,7 +70,8 @@
     "placeholderPassword": "Type your password",
     "messageInvalid": "Invalid username or password.",
     "forgotPassword": "Forgot password?",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "messageInvalidCustomer": "Your account is not authorized to log in."
   },
   "ForgotPassword": {
     "errorVide": "Please enter your email.",
