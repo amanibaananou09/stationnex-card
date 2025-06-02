@@ -24,26 +24,23 @@ export const getListofCard = async (
 
   if (cardId || holder || actif || expirationDate) {
     url += "/filter";
-  } else {
-    url;
   }
 
+// Append search params if they exist
   if (cardId) {
     searchParams.append("cardId", cardId);
   }
-
   if (holder) {
     searchParams.append("holder", holder);
   }
-
   if (actif) {
     searchParams.append("actif", actif);
   }
   if (expirationDate) {
     searchParams.append("expirationDate", expirationDate);
   }
-  const response = await api.get(url + "?" + searchParams.toString());
 
+  const response = await api.get(`${url}?${searchParams.toString()}`);
   return response.data;
 };
 

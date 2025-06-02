@@ -1,13 +1,7 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import {
-  activateCard,
-  addCard,
-  deactivateCard,
-  getListofCard,
-  updateCard,
-} from "common/api/card-api";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
+import {activateCard, deactivateCard, getListofCard,} from "common/api/card-api";
 import useQueryParams from "./use-query-params";
-import { useAuth } from "../store/AuthContext";
+import {useAuth} from "../store/AuthContext";
 
 export const useCard = (customerId: number) => {
   const query = useQueryParams();

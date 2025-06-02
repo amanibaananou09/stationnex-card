@@ -1,20 +1,21 @@
 import SignIn from "views/Pages/SignIn";
-import { RouteConfig } from "common/model";
-import { DocumentIcon, PersonIcon, WalletIcon } from "components/Icons/Icons";
-import { useTranslation } from "react-i18next";
+import {RouteConfig} from "common/model";
+import {DocumentIcon, PersonIcon, WalletIcon} from "components/Icons/Icons";
+import {useTranslation} from "react-i18next";
 import ForgotPassword from "views/Pages/ForgotPassword";
 import ResetPassword from "views/Pages/ResetPassword";
 import React from "react";
-import { FaChartColumn, FaMoneyBills } from "react-icons/fa6";
-import { TbReport } from "react-icons/tb";
-import { FaMoneyBillWave } from "react-icons/fa";
-import { PiHandCoinsFill } from "react-icons/pi";
+import {FaChartColumn, FaMoneyBills} from "react-icons/fa6";
+import {TbReport} from "react-icons/tb";
+import {FaMoneyBillWave} from "react-icons/fa";
+import {PiHandCoinsFill} from "react-icons/pi";
 import Dashboard from "../views/Dashboard/Dashboard";
 import Transactions from "views/Dashboard/Transactions";
 import Cardes from "../views/Dashboard/Cardes";
 
+const { t } = useTranslation();
+
 export const dashboardRoutes = (): RouteConfig[] => {
-  const { t } = useTranslation();
   return [
     {
       path: "/home",
@@ -69,7 +70,6 @@ export const dashboardRoutes = (): RouteConfig[] => {
 };
 
 export const authRoutes = (): RouteConfig[] => {
-  const { t } = useTranslation();
   return [
     {
       path: "/signin",
