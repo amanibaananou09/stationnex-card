@@ -85,8 +85,8 @@ pipelines:
   branches:
     develop:
       - step: *install-dependencies
-      - step: *build-and-test
       - step: *quality
+      - step: *build-and-test
       - step: *build-docker-image
       - step:
           <<: *deploy-container
@@ -94,8 +94,8 @@ pipelines:
           deployment: recette
     '*':
       - step: *install-dependencies
-      - step: *build-and-test
       - step: *quality
+      - step: *build-and-test
   tags:
     '*':
       - step: *install-dependencies
