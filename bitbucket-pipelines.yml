@@ -41,11 +41,12 @@ definitions:
           - linux
         caches:
           - node
+        size: 2x
         script:
           - export REACT_APP_VERSION=${BITBUCKET_BRANCH-${BITBUCKET_TAG}}
           - export REACT_APP_BACKEND_URL=/api
           - export NODE_OPTIONS=--max-old-space-size=4096
-          - npm run build -- --max_old_space_size=4096
+          - npm run build
         artifacts:
           - build/**
 
