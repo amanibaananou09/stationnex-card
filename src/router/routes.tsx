@@ -13,9 +13,8 @@ import Dashboard from "../views/Dashboard/Dashboard";
 import Transactions from "views/Dashboard/Transactions";
 import Cardes from "../views/Dashboard/Cardes";
 
-const { t } = useTranslation();
-
 export const dashboardRoutes = (): RouteConfig[] => {
+  const { t } = useTranslation();
   return [
     {
       path: "/home",
@@ -70,6 +69,7 @@ export const dashboardRoutes = (): RouteConfig[] => {
 };
 
 export const authRoutes = (): RouteConfig[] => {
+  const { t } = useTranslation();
   return [
     {
       path: "/signin",
