@@ -103,7 +103,10 @@
     "station": "Point de vente",
     "product": "Carburant",
     "city": "Ville",
-    "period": "Periode"
+    "period": "Periode",
+    "from":"De",
+    "to" : "à",
+    "clear": "Clear"
   },
   "transactions": {
     "noTransactions": "Aucune transaction trouvée",

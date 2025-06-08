@@ -1,15 +1,11 @@
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import {Button, ButtonGroup} from "@chakra-ui/react";
 
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import * as XLSX from "xlsx";
-import {
-  formatDate,
-  formatNumbeer,
-  formatNumberByCountryCode,
-} from "../../utils/utils";
-import { Transaction } from "../../common/model";
+import {formatDate, formatNumbeer, formatNumberByCountryCode,} from "../../utils/utils";
+import {Transaction} from "../../common/model";
 
 type TransactionExporterProps = {
   transactions: Transaction[];

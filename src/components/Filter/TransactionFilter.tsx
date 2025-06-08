@@ -1,21 +1,12 @@
-import { ArrowDownIcon } from "@chakra-ui/icons";
-import {
-  Button,
-  Checkbox,
-  Flex,
-  Input,
-  Menu,
-  MenuButton,
-  MenuList,
-  Text,
-} from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useAuth } from "../../store/AuthContext";
-import { Filter } from "../../common/model";
-import { useCard } from "../../hooks/use-transaction";
-import { useProduct } from "hooks/use-product";
-import { useSalePoint } from "../../hooks/use-sale-point";
+import {ArrowDownIcon} from "@chakra-ui/icons";
+import {Button, Checkbox, Flex, Input, Menu, MenuButton, MenuList, Text,} from "@chakra-ui/react";
+import {useEffect, useRef, useState} from "react";
+import {useTranslation} from "react-i18next";
+import {useAuth} from "../../store/AuthContext";
+import {Filter} from "../../common/model";
+import {useCard} from "../../hooks/use-transaction";
+import {useProduct} from "hooks/use-product";
+import {useSalePoint} from "../../hooks/use-sale-point";
 
 type TransactionFilterProps = {
   onChange: (filter: Filter) => void;
@@ -204,14 +195,14 @@ const TransactionFilter = ({ onChange }: TransactionFilterProps) => {
         </MenuButton>
         <MenuList zIndex="2">
           <Flex flexDirection="column" gap={5} p="10px 20px 20px">
-            <Text fontWeight="semibold">{t("From")}:</Text>
+            <Text fontWeight="semibold">{t("filter.from")}:</Text>
             <Input
               value={filter.period.from}
               ref={fromRef}
               onChange={updatePeriod}
               type="datetime-local"
             />
-            <Text fontWeight="semibold">{t("To")}:</Text>
+            <Text fontWeight="semibold">{t("filter.to")}:</Text>
             <Input
               min={filter.period.from}
               value={filter.period.to}
@@ -223,7 +214,7 @@ const TransactionFilter = ({ onChange }: TransactionFilterProps) => {
         </MenuList>
       </Menu>
       <Button colorScheme="blue" onClick={clearHandler}>
-        {t("Clear")}
+        {t("filter.clear")}
       </Button>
     </Flex>
   );

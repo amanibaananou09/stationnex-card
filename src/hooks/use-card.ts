@@ -1,15 +1,20 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
-import {activateCard, deactivateCard, getListofCard,} from "common/api/card-api";
+import {activateCard, deactivateCard, getListofCard} from "common/api/card-api";
 import useQueryParams from "./use-query-params";
 import {useAuth} from "../store/AuthContext";
 
-export const useCard = (customerId: number) => {
+const useCardQueryParams = () => {
   const query = useQueryParams();
+  return {
+    cardId: query.get("cardId") ?? undefined,
+    holder: query.get("holder") ?? undefined,
+    actif: query.get("actif") ?? undefined,
+    expirationDate: query.get("expirationDate") ?? undefined,
+  };
+};
 
-  const cardId = query.get("cardId") ?? undefined;
-  const holder = query.get("holder") ?? undefined;
-  const actif = query.get("actif") ?? undefined;
-  const expirationDate = query.get("expirationDate") ?? undefined;
+export const useCard = (customerId: number) => {
+  const {cardId, holder, actif, expirationDate} = useCardQueryParams();
 
   const { data: cards, isLoading } = useQuery({
     queryKey: ["card", { cardId, holder, actif, expirationDate }, customerId],
@@ -31,18 +36,23 @@ export const useCard = (customerId: number) => {
     isLoading,
   };
 };
+
 export const useCardQueries = () => {
   const queryClient = useQueryClient();
   const { customerId } = useAuth();
 
+  const commonMutationConfig = {
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["card"] }),
+  };
+
   const { mutate: activate } = useMutation({
     mutationFn: (cardId: string) => activateCard(customerId, cardId),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["card"] }),
+    ...commonMutationConfig,
   });
 
   const { mutate: desactivate } = useMutation({
     mutationFn: (cardId: string) => deactivateCard(customerId, cardId),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["card"] }),
+    ...commonMutationConfig,
   });
 
   return {

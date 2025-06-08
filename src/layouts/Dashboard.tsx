@@ -1,19 +1,19 @@
 // Chakra imports
-import { Box, Flex, Portal, useDisclosure } from "@chakra-ui/react";
+import {Box, Flex, Portal, useDisclosure} from "@chakra-ui/react";
 import Configurator from "components/Configurator/Configurator";
 import Footer from "components/Footer/Footer";
 
 // Layout components
 import Sidebar from "components/Sidebar/Sidebar";
-import { useState } from "react";
-import { Switch } from "react-router-dom";
-import { dashboardRoutes } from "../router/routes";
+import {useState} from "react";
+import {Switch} from "react-router-dom";
+import {dashboardRoutes} from "../router/routes";
 // Custom Chakra theme
 import FixedPlugin from "components/FixedPlugin/FixedPlugin";
 // Custom components
-import { faGasPump } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Layout } from "common/enums";
+import {faGasPump} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Layout} from "common/enums";
 import MainPanel from "components/Layout/MainPanel";
 import PanelContainer from "components/Layout/PanelContainer";
 import PanelContent from "components/Layout/PanelContent";
@@ -21,13 +21,15 @@ import Navbar from "components/Navbars/Navbar";
 import SidebarLogo from "components/Sidebar/SidebarLogo";
 import useRoutes from "hooks/use-routes";
 import MainRoute from "router/Route/MainRoute";
-import { useAuth } from "store/AuthContext";
-import { useESSContext } from "../store/ESSContext";
+import {useAuth} from "store/AuthContext";
+import {useESSContext} from "../store/ESSContext";
+import {useTranslation} from "react-i18next";
 
 const DashboardLayout = (props: { [x: string]: any }) => {
   const { isSignedIn } = useAuth();
   const { isLoading } = useESSContext();
-  const routes = dashboardRoutes();
+  const { t } = useTranslation();
+  const routes = dashboardRoutes(t);
 
   const { getActiveRoute, getActiveNavbar, getReactRoutes } = useRoutes();
 

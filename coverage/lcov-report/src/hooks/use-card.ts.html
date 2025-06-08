@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">78.94% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/20</span>
+                <span class='fraction'>15/19</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">78.94% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/20</span>
+                <span class='fraction'>15/19</span>
             </div>
         
             
@@ -115,7 +115,27 @@
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,11 +144,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -144,6 +159,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,13 +169,17 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
@@ -168,17 +188,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
-import {activateCard, deactivateCard, getListofCard,} from "common/api/card-api";
+import {activateCard, deactivateCard, getListofCard} from "common/api/card-api";
 import useQueryParams from "./use-query-params";
 import {useAuth} from "../store/AuthContext";
 &nbsp;
-export const useCard = (customerId: number) =&gt; {
+const useCardQueryParams = () =&gt; {
   const query = useQueryParams();
+  return {
+    cardId: query.get("cardId") ?? <span class="branch-1 cbranch-no" title="branch not covered" >undefined,</span>
+    holder: query.get("holder") ?? <span class="branch-1 cbranch-no" title="branch not covered" >undefined,</span>
+    actif: query.get("actif") ?? <span class="branch-1 cbranch-no" title="branch not covered" >undefined,</span>
+    expirationDate: query.get("expirationDate") ?? <span class="branch-1 cbranch-no" title="branch not covered" >undefined,</span>
+  };
+};
 &nbsp;
-  const cardId = query.get("cardId") ?? <span class="branch-1 cbranch-no" title="branch not covered" >undefined;</span>
-  const holder = query.get("holder") ?? <span class="branch-1 cbranch-no" title="branch not covered" >undefined;</span>
-  const actif = query.get("actif") ?? <span class="branch-1 cbranch-no" title="branch not covered" >undefined;</span>
-  const expirationDate = query.get("expirationDate") ?? <span class="branch-1 cbranch-no" title="branch not covered" >undefined;</span>
+export const useCard = (customerId: number) =&gt; {
+  const {cardId, holder, actif, expirationDate} = useCardQueryParams();
 &nbsp;
   const { data: cards, isLoading } = useQuery({
     queryKey: ["card", { cardId, holder, actif, expirationDate }, customerId],
@@ -200,18 +225,23 @@ export const useCard = (customerId: number) =&gt; {
     isLoading,
   };
 };
+&nbsp;
 export const useCardQueries = () =&gt; {
   const queryClient = useQueryClient();
   const { customerId } = useAuth();
 &nbsp;
+  const commonMutationConfig = {
+    onSuccess: () =&gt; queryClient.invalidateQueries({ queryKey: ["card"] }),
+  };
+&nbsp;
   const { mutate: activate } = useMutation({
     mutationFn: <span class="fstat-no" title="function not covered" >(c</span>ardId: string) =&gt; <span class="cstat-no" title="statement not covered" >activateCard(customerId, cardId),</span>
-    onSuccess: () =&gt; queryClient.invalidateQueries({ queryKey: ["card"] }),
+    ...commonMutationConfig,
   });
 &nbsp;
   const { mutate: desactivate } = useMutation({
     mutationFn: <span class="fstat-no" title="function not covered" >(c</span>ardId: string) =&gt; <span class="cstat-no" title="statement not covered" >deactivateCard(customerId, cardId),</span>
-    onSuccess: <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >queryClient.invalidateQueries({ queryKey: ["card"] }),</span>
+    ...commonMutationConfig,
   });
 &nbsp;
   return {
@@ -226,7 +256,7 @@ export const useCardQueries = () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-04T07:34:40.647Z
+                at 2025-06-08T20:58:54.263Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

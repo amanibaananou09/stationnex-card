@@ -1,21 +1,23 @@
 // Chakra imports
-import { Box, Portal } from "@chakra-ui/react";
+import {Box, Portal} from "@chakra-ui/react";
 import Footer from "../components/Footer/Footer";
 // Core components
-import { Layout } from "common/enums";
+import {Layout} from "common/enums";
 import AuthNavbar from "components/Navbars/AuthNavbar";
 import useRoutes from "hooks/use-routes";
-import { useEffect, useRef } from "react";
-import { Switch } from "react-router-dom";
+import {useEffect, useRef} from "react";
+import {Switch} from "react-router-dom";
 import MainRoute from "../router/Route/MainRoute";
-import { authRoutes } from "../router/routes";
+import {authRoutes} from "../router/routes";
+import {useTranslation} from "react-i18next";
 
 const AuthLayout = () => {
   const { getReactRoutes, getActiveNavbar } = useRoutes();
   const wrapper = useRef<HTMLDivElement | null>(null);
   const navRef = useRef<HTMLDivElement | null>(null);
+  const { t } = useTranslation();
 
-  const routes = authRoutes();
+  const routes = authRoutes(t);
 
   useEffect(() => {
     document.body.style.overflow = "unset";

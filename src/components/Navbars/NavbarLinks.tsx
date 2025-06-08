@@ -1,28 +1,18 @@
-import { BellIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Flex,
-  Image,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Text,
-} from "@chakra-ui/react";
-import { ALERTS_TOPIC } from "common/api/WebSocketTopics";
-import { ProfileIcon } from "components/Icons/Icons";
+import {BellIcon} from "@chakra-ui/icons";
+import {Box, Flex, Menu, MenuButton, MenuItem, MenuList, Text,} from "@chakra-ui/react";
+import {ALERTS_TOPIC} from "common/api/WebSocketTopics";
+import {ProfileIcon} from "components/Icons/Icons";
 import LanguageSelector from "components/LanguageSelector";
 import ItemContent from "components/Menu/ItemContent";
-import { SidebarResponsive } from "components/Sidebar/Sidebar";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
-import { useSubscription } from "react-stomp-hooks";
-import { dashboardRoutes } from "router/routes";
-import { useAuth } from "store/AuthContext";
+import {SidebarResponsive} from "components/Sidebar/Sidebar";
+import {useState} from "react";
+import {useTranslation} from "react-i18next";
+import {useHistory} from "react-router-dom";
+import {useSubscription} from "react-stomp-hooks";
+import {dashboardRoutes} from "router/routes";
+import {useAuth} from "store/AuthContext";
 
 import avatar1 from "../../assets/img/avatars/avatar1.png";
-import fuel from "../../assets/img/station.png";
 
 interface Notification {
   notification: string;
@@ -35,8 +25,8 @@ const NavBarLinks = (props: any) => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const history = useHistory();
   const { signOut, user, isSignedIn } = useAuth();
-  const routes = dashboardRoutes();
   const { t } = useTranslation();
+  const routes = dashboardRoutes(t);
 
   useSubscription(ALERTS_TOPIC, (message) => {
     const notification: string = message.body || "";

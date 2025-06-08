@@ -98,7 +98,10 @@
     "station": "Point of sale",
     "product": "Fuel Grade",
     "city": "City",
-    "period": "Period"
+    "period": "Period",
+    "from": "From",
+    "to": "to",
+    "clear": "Clear"
   },
   "transactions": {
     "noTransactions": "No transactions found",

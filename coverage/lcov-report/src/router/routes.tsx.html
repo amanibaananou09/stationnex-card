@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
@@ -154,15 +154,7 @@
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
 <a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,9 +169,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -232,9 +221,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -262,7 +248,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import SignIn from "views/Pages/SignIn";
 import {RouteConfig} from "common/model";
 import {DocumentIcon, PersonIcon, WalletIcon} from "components/Icons/Icons";
-import {useTranslation} from "react-i18next";
 import ForgotPassword from "views/Pages/ForgotPassword";
 import ResetPassword from "views/Pages/ResetPassword";
 import React from "react";
@@ -274,10 +259,8 @@ import Dashboard from "../views/Dashboard/Dashboard";
 import Transactions from "views/Dashboard/Transactions";
 import Cardes from "../views/Dashboard/Cardes";
 &nbsp;
-export const dashboardRoutes = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span>: RouteConfig[] =&gt; {</span>
-  const { t } = <span class="cstat-no" title="statement not covered" >useTranslation();</span>
-<span class="cstat-no" title="statement not covered" >  return [</span>
-    {
+export const dashboardRoutes = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(t</span>: (key: string) =&gt; string): RouteConfig[] =&gt; <span class="cstat-no" title="statement not covered" >[</span></span>
+  {
       path: "/home",
       name: t("routes.dashboard"),
       icon: &lt;FaChartColumn color="inherit" /&gt;,
@@ -327,11 +310,8 @@ export const dashboardRoutes = <span class="cstat-no" title="statement not cover
       layout: "/stationnex-card",
     },
   ];
-};
 &nbsp;
-export const authRoutes = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span>: RouteConfig[] =&gt; {</span>
-  const { t } = <span class="cstat-no" title="statement not covered" >useTranslation();</span>
-<span class="cstat-no" title="statement not covered" >  return [</span>
+export const authRoutes = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(t</span>: (key: string) =&gt; string): RouteConfig[] =&gt; <span class="cstat-no" title="statement not covered" >[</span></span>
     {
       path: "/signin",
       name: t("routes.signIn"),
@@ -356,7 +336,6 @@ export const authRoutes = <span class="cstat-no" title="statement not covered" >
       hideInNavbar: true,
     },
   ];
-};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -364,7 +343,7 @@ export const authRoutes = <span class="cstat-no" title="statement not covered" >
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-04T07:34:40.647Z
+                at 2025-06-08T20:58:54.263Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

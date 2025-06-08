@@ -1,7 +1,6 @@
 import SignIn from "views/Pages/SignIn";
 import {RouteConfig} from "common/model";
 import {DocumentIcon, PersonIcon, WalletIcon} from "components/Icons/Icons";
-import {useTranslation} from "react-i18next";
 import ForgotPassword from "views/Pages/ForgotPassword";
 import ResetPassword from "views/Pages/ResetPassword";
 import React from "react";
@@ -13,10 +12,8 @@ import Dashboard from "../views/Dashboard/Dashboard";
 import Transactions from "views/Dashboard/Transactions";
 import Cardes from "../views/Dashboard/Cardes";
 
-export const dashboardRoutes = (): RouteConfig[] => {
-  const { t } = useTranslation();
-  return [
-    {
+export const dashboardRoutes = (t: (key: string) => string): RouteConfig[] => [
+  {
       path: "/home",
       name: t("routes.dashboard"),
       icon: <FaChartColumn color="inherit" />,
@@ -66,11 +63,8 @@ export const dashboardRoutes = (): RouteConfig[] => {
       layout: "/stationnex-card",
     },
   ];
-};
 
-export const authRoutes = (): RouteConfig[] => {
-  const { t } = useTranslation();
-  return [
+export const authRoutes = (t: (key: string) => string): RouteConfig[] => [
     {
       path: "/signin",
       name: t("routes.signIn"),
@@ -95,4 +89,3 @@ export const authRoutes = (): RouteConfig[] => {
       hideInNavbar: true,
     },
   ];
-};

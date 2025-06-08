@@ -4,6 +4,7 @@
     "paths": {
       "*": ["*"],
       "@assets/*": ["assets/*"],
+      "common/*": ["common/*"]
     },
     "types": [
       "node",

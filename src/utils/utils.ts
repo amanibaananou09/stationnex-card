@@ -1,4 +1,4 @@
-import { DecodedToken, User } from "common/model";
+import {DecodedToken, User} from "common/model";
 import jwt_decode from "jwt-decode";
 
 export const decodeToken = (token: string | null): User | null => {
@@ -53,7 +53,8 @@ export const formatNumber = (value: number) => {
     maximumFractionDigits: 2,
   });
 };
-export const formatNumbeer = (value: number) => {
+export const formatNumbeer = (value: number | null | undefined): number | null => {
+  if (typeof value !== 'number' || isNaN(value)) return null;
   return parseFloat(value.toFixed(2));
 };
 

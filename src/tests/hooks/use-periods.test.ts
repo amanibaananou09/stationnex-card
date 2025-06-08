@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks';
-import { useQuery } from '@tanstack/react-query';
+import {renderHook} from '@testing-library/react-hooks';
+import {useQuery} from '@tanstack/react-query';
 import {usePeriods} from "../../hooks/use-periods";
 
 // Mock @tanstack/react-query
