@@ -1,4 +1,4 @@
-import { HamburgerIcon } from "@chakra-ui/icons";
+import {HamburgerIcon} from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -13,453 +13,219 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { SidebarProps } from "common/react-props";
+import {SidebarProps} from "common/react-props";
 import IconBox from "components/Icons/IconBox";
-import {
-  renderThumbLight,
-  renderTrack,
-  renderView,
-} from "components/Scrollbar/Scrollbar";
-import { HSeparator } from "components/Separator/Separator";
+import {renderThumbLight, renderTrack, renderView,} from "components/Scrollbar/Scrollbar";
+import {HSeparator} from "components/Separator/Separator";
 import SidebarHelp from "components/Sidebar/SidebarHelp";
-import React, { FC, Fragment } from "react";
-import { Scrollbars } from "react-custom-scrollbars";
-import { NavLink, useLocation } from "react-router-dom";
-import { useAuth } from "store/AuthContext";
+import React, {FC, Fragment, useRef} from "react";
+import {Scrollbars} from "react-custom-scrollbars";
+import {NavLink, useLocation} from "react-router-dom";
+import {useAuth} from "store/AuthContext";
 
-const Sidebar = (props: SidebarProps) => {
-  const { isSignedIn } = useAuth();
-  let location = useLocation();
+// Shared constants and styles
+const SIDEBAR_STYLES = {
+  activeBg: "white",
+  inactiveBg: "white",
+  activeColor: "gray.700",
+  inactiveColor: "gray.400",
+  sidebarActiveShadow: "0px 7px 11px rgba(0, 0, 0, 0.04)",
+  sidebarBackgroundColor: "#012249",
+  variantChange: "0.2s linear",
+};
+
+// Shared hook for active route detection
+const useActiveRoute = () => {
+  const location = useLocation();
+  return (routeName: string) => location.pathname.startsWith(routeName) ? "active" : "";
+};
+
+// Shared component for creating links
+const useSidebarLinks = (routes: any, isSignedIn?: boolean) => {
+  const activeRoute = useActiveRoute();
   const [state, setState] = React.useState<{ [key: string]: boolean }>({});
-  const mainPanel = React.useRef<HTMLDivElement>(null);
-  let variantChange = "0.2s linear";
-
-  const activeRoute = (routeName: string) => {
-    return location.pathname.startsWith(routeName) ? "active" : "";
-  };
 
   const createLinks = (routes: any) => {
-    //styles
-    let activeBg = "white";
-    let inactiveBg = "white";
-    let activeColor = "gray.700";
-    let inactiveColor = "gray.400";
-    let sidebarActiveShadow = "0px 7px 11px rgba(0, 0, 0, 0.04)";
-
     const routesArray = Object.values(routes);
-
     return routesArray.map((prop: any, key: number) => {
-      if (isSignedIn && prop.publicRoute) {
-        return null;
-      }
+      if (isSignedIn && prop.publicRoute) return null;
+      if (prop.hideInNavbar || prop.redirect) return null;
 
-      if (prop.hideInNavbar) {
-        return null;
-      }
-
-      if (prop.redirect) {
-        return null;
-      }
       if (prop.category) {
-        var st: { [key: string]: boolean } = {};
-        st[prop.state!] = !state[prop.state!];
+        const st = { ...state, [prop.state!]: !state[prop.state!] };
         return (
-          <Fragment key={key}>
-            {/* Add a key prop here */}
-            <Text
-              color={activeColor}
-              fontWeight="bold"
-              mb={{
-                xl: "6px",
-              }}
-              mx="auto"
-              ps={{
-                sm: "10px",
-                xl: "16px",
-              }}
-              py="12px"
-            >
-              {prop.name}
-            </Text>
-            {createLinks(prop.views!)}
-          </Fragment>
+            <Fragment key={key}>
+              <Text
+                  color={SIDEBAR_STYLES.activeColor}
+                  fontWeight="bold"
+                  mb={{ xl: "6px" }}
+                  mx="auto"
+                  ps={{ sm: "10px", xl: "16px" }}
+                  py="12px"
+              >
+                {prop.name}
+              </Text>
+              {createLinks(prop.views!)}
+            </Fragment>
         );
       }
+
+      const isActive = activeRoute(prop.layout + prop.path) === "active";
+      const buttonProps = {
+        boxSize: "initial",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        mb: { xl: "6px" },
+        mx: { xl: "auto" },
+        ps: { sm: "10px", xl: "16px" },
+        py: "12px",
+        borderRadius: "15px",
+        w: "100%",
+        _active: {
+          bg: "inherit",
+          transform: "none",
+          borderColor: "transparent",
+        },
+        _focus: {
+          boxShadow: isActive ? SIDEBAR_STYLES.sidebarActiveShadow : "none",
+        },
+      };
+
       return (
-        <NavLink to={prop.layout + prop.path} key={key}>
-          {activeRoute(prop.layout + prop.path) === "active" ? (
+          <NavLink to={prop.layout + prop.path} key={key}>
             <Button
-              boxSize="initial"
-              justifyContent="flex-start"
-              alignItems="center"
-              boxShadow={sidebarActiveShadow}
-              bg={activeBg}
-              transition={variantChange}
-              mb={{
-                xl: "6px",
-              }}
-              mx={{
-                xl: "auto",
-              }}
-              ps={{
-                sm: "10px",
-                xl: "16px",
-              }}
-              py="12px"
-              borderRadius="15px"
-              w="100%"
-              _active={{
-                bg: "inherit",
-                transform: "none",
-                borderColor: "transparent",
-              }}
-              _focus={{
-                boxShadow: "0px 7px 11px rgba(0, 0, 0, 0.04)",
-              }}
+                {...buttonProps}
+                bg={isActive ? SIDEBAR_STYLES.activeBg : "transparent"}
+                boxShadow={isActive ? SIDEBAR_STYLES.sidebarActiveShadow : undefined}
             >
               <Flex>
                 {typeof prop.icon === "string" ? (
-                  <Icon>{prop.icon}</Icon>
+                    <Icon>{prop.icon}</Icon>
                 ) : (
-                  <IconBox
-                    bg="blue.500"
-                    color="white"
-                    h="30px"
-                    w="30px"
-                    me="12px"
-                    transition={variantChange}
-                  >
-                    {prop.icon}
-                  </IconBox>
+                    <IconBox
+                        bg={isActive ? "blue.500" : SIDEBAR_STYLES.inactiveBg}
+                        color={isActive ? "white" : "blue.500"}
+                        h="30px"
+                        w="30px"
+                        me="12px"
+                        transition={SIDEBAR_STYLES.variantChange}
+                    >
+                      {prop.icon}
+                    </IconBox>
                 )}
-                <Text color={activeColor} my="auto" fontSize="sm">
+                <Text
+                    color={isActive ? SIDEBAR_STYLES.activeColor : SIDEBAR_STYLES.inactiveColor}
+                    my="auto"
+                    fontSize="sm"
+                >
                   {prop.name}
                 </Text>
               </Flex>
             </Button>
-          ) : (
-            <Button
-              boxSize="initial"
-              justifyContent="flex-start"
-              alignItems="center"
-              bg="transparent"
-              mb={{
-                xl: "6px",
-              }}
-              mx={{
-                xl: "auto",
-              }}
-              py="12px"
-              ps={{
-                sm: "10px",
-                xl: "16px",
-              }}
-              borderRadius="15px"
-              w="100%"
-              _active={{
-                bg: "inherit",
-                transform: "none",
-                borderColor: "transparent",
-              }}
-              _focus={{
-                boxShadow: "none",
-              }}
-            >
-              <Flex>
-                {typeof prop.icon === "string" ? (
-                  <Icon>{prop.icon}</Icon>
-                ) : (
-                  <IconBox
-                    bg={inactiveBg}
-                    color="blue.500"
-                    h="30px"
-                    w="30px"
-                    me="12px"
-                    transition={variantChange}
-                  >
-                    {prop.icon}
-                  </IconBox>
-                )}
-                <Text color={inactiveColor} my="auto" fontSize="sm">
-                  {prop.name}
-                </Text>
-              </Flex>
-            </Button>
-          )}
-        </NavLink>
+          </NavLink>
       );
     });
   };
 
-  const { logo, routes } = props;
+  return createLinks(routes);
+};
 
-  var links = <>{createLinks(routes)}</>;
-
-  var brand = (
-    <Box pt={"25px"} mb="12px">
+const Brand = ({ logo, pt = "25px" }: { logo: React.ReactNode; pt?: string }) => (
+    <Box pt={pt} mb={pt === "25px" ? "12px" : "8px"}>
       {logo}
       <HSeparator my="26px" />
     </Box>
-  );
+);
+
+export const Sidebar = (props: SidebarProps) => {
+  const { isSignedIn } = useAuth();
+  const { logo, routes, sidebarVariant } = props;
+  const mainPanel = useRef<HTMLDivElement>(null);
+  const links = useSidebarLinks(routes, isSignedIn);
 
   return (
-    <Box ref={mainPanel}>
-      <Box
-        bgImage="white"
-        bg="#FFFFFF"
-        display={{ base: "none", xl: "block" }}
-        position="fixed"
-      >
+      <Box ref={mainPanel}>
         <Box
-          bg="#012249"
-          transition={variantChange}
-          w="260px"
-          maxW="260px"
-          ms={{
-            sm: "16px",
-          }}
-          my={{
-            sm: "16px",
-          }}
-          h="calc(100vh - 32px)"
-          ps="20px"
-          pe="20px"
-          m="0px"
-          filter="drop-shadow(0px 5px 14px rgba(0, 0, 0, 0.05))"
-          borderRadius="20px"
-          display={{ base: "none", xl: "block" }}
+            bgImage="white"
+            bg="#FFFFFF"
+            display={{ base: "none", xl: "block" }}
+            position="fixed"
         >
-          <Text
-            fontSize="x-small"
-            fontWeight="bold"
-            color="blue.600"
-            textAlign="end"
+          <Box
+              bg={SIDEBAR_STYLES.sidebarBackgroundColor}
+              transition={SIDEBAR_STYLES.variantChange}
+              w="260px"
+              maxW="260px"
+              ms={{ sm: "16px" }}
+              my={{ sm: "16px" }}
+              h="calc(100vh - 32px)"
+              ps="20px"
+              pe="20px"
+              m="0px"
+              filter="drop-shadow(0px 5px 14px rgba(0, 0, 0, 0.05))"
+              borderRadius="20px"
+              display={{ base: "none", xl: "block" }}
           >
-            {process.env.REACT_APP_VERSION}
-          </Text>
-          <Scrollbars
-            autoHide
-            renderTrackVertical={renderTrack}
-            renderThumbVertical={renderThumbLight}
-            renderView={renderView}
-          >
-            <Box>{brand}</Box>
-            <Stack direction="column" mb="40px">
-              <Box>{links}</Box>
-            </Stack>
-            <SidebarHelp sidebarVariant={props.sidebarVariant} />
-          </Scrollbars>
+            <Text fontSize="x-small" fontWeight="bold" color="blue.600" textAlign="end">
+              {process.env.REACT_APP_VERSION}
+            </Text>
+            <Scrollbars
+                autoHide
+                renderTrackVertical={renderTrack}
+                renderThumbVertical={renderThumbLight}
+                renderView={renderView}
+            >
+              <Box><Brand logo={logo} /></Box>
+              <Stack direction="column" mb="40px">
+                <Box>{links}</Box>
+              </Stack>
+              <SidebarHelp sidebarVariant={sidebarVariant} />
+            </Scrollbars>
+          </Box>
         </Box>
       </Box>
-    </Box>
   );
 };
 
 export const SidebarResponsive: FC<SidebarProps> = (props) => {
-  let location = useLocation();
   const { logo, routes, hamburgerColor, ...rest } = props;
-  const [state, setState] = React.useState<{ [key: string]: boolean }>({});
-  const mainPanel = React.useRef<HTMLDivElement>(null);
-  const activeRoute = (routeName: string) => {
-    return location.pathname === routeName ? "active" : "";
-  };
-
-  //styles
-  let activeBg = "white";
-  let inactiveBg = "white";
-  let activeColor = "gray.700";
-  let inactiveColor = "gray.400";
-  let sidebarActiveShadow = "0px 7px 11px rgba(0, 0, 0, 0.04)";
-  let sidebarBackgroundColor = "#012249";
-
-  const createLinks = (routes: any) => {
-    const routesArray = Object.values(routes);
-    return routesArray.map((prop: any, key: any) => {
-      if (prop.redirect) {
-        return null;
-      }
-      if (prop.category) {
-        var st: { [key: string]: boolean } = {};
-        st[prop.state!] = !state[prop.state!];
-        return (
-          <Fragment key={key}>
-            <Text
-              color={activeColor}
-              fontWeight="bold"
-              mb={{
-                xl: "6px",
-              }}
-              mx="auto"
-              ps={{
-                sm: "10px",
-                xl: "16px",
-              }}
-              py="12px"
-            >
-              {prop.name}
-            </Text>
-            {createLinks(prop.views!)}
-          </Fragment>
-        );
-      }
-      return (
-        <NavLink to={prop.layout + prop.path} key={key}>
-          {activeRoute(prop.layout + prop.path) === "active" ? (
-            <Button
-              boxSize="initial"
-              justifyContent="flex-start"
-              alignItems="center"
-              bg={activeBg}
-              boxShadow={sidebarActiveShadow}
-              mb={{
-                xl: "6px",
-              }}
-              mx={{
-                xl: "auto",
-              }}
-              ps={{
-                sm: "10px",
-                xl: "16px",
-              }}
-              py="12px"
-              borderRadius="15px"
-              w="100%"
-              _active={{
-                bg: "inherit",
-                transform: "none",
-                borderColor: "transparent",
-              }}
-              _focus={{
-                boxShadow: "none",
-              }}
-            >
-              <Flex>
-                {typeof prop.icon === "string" ? (
-                  <Icon>{prop.icon}</Icon>
-                ) : (
-                  <IconBox
-                    bg="blue.500"
-                    color="white"
-                    h="30px"
-                    w="30px"
-                    me="12px"
-                  >
-                    {prop.icon}
-                  </IconBox>
-                )}
-                <Text color={activeColor} my="auto" fontSize="sm">
-                  {prop.name}
-                </Text>
-              </Flex>
-            </Button>
-          ) : (
-            <Button
-              boxSize="initial"
-              justifyContent="flex-start"
-              alignItems="center"
-              bg="transparent"
-              mb={{
-                xl: "6px",
-              }}
-              mx={{
-                xl: "auto",
-              }}
-              py="12px"
-              ps={{
-                sm: "10px",
-                xl: "16px",
-              }}
-              borderRadius="15px"
-              w="100%"
-              _active={{
-                bg: "inherit",
-                transform: "none",
-                borderColor: "transparent",
-              }}
-              _focus={{
-                boxShadow: "none",
-              }}
-            >
-              <Flex>
-                {typeof prop.icon === "string" ? (
-                  <Icon>{prop.icon}</Icon>
-                ) : (
-                  <IconBox
-                    bg={inactiveBg}
-                    color="blue.500"
-                    h="30px"
-                    w="30px"
-                    me="12px"
-                  >
-                    {prop.icon}
-                  </IconBox>
-                )}
-                <Text color={inactiveColor} my="auto" fontSize="sm">
-                  {prop.name}
-                </Text>
-              </Flex>
-            </Button>
-          )}
-        </NavLink>
-      );
-    });
-  };
-
-  var links = <>{createLinks(routes)}</>;
-
-  var brand = (
-    <Box pt={"35px"} mb="8px">
-      {logo}
-      <HSeparator my="26px" />
-    </Box>
-  );
-
+  const mainPanel = useRef<HTMLDivElement>(null);
+  const links = useSidebarLinks(routes);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef<SVGSVGElement>(null);
+  const btnRef = useRef<SVGSVGElement>(null);
 
   return (
-    <Flex
-      display={{ sm: "flex", xl: "none" }}
-      ref={mainPanel}
-      alignItems="center"
-    >
-      <HamburgerIcon
-        color={hamburgerColor}
-        w="28px"
-        h="28px"
-        ref={btnRef}
-        onClick={onOpen}
-      />
-      <Drawer isOpen={isOpen} onClose={onClose} finalFocusRef={btnRef}>
-        <DrawerOverlay />
-        <DrawerContent
-          w="250px"
-          maxW="250px"
-          ms={{
-            sm: "16px",
-          }}
-          my={{
-            sm: "16px",
-          }}
-          borderRadius="16px"
-          bg={sidebarBackgroundColor}
-        >
-          <DrawerCloseButton
-            _focus={{ boxShadow: "none" }}
-            _hover={{ boxShadow: "none" }}
-          />
-          <DrawerBody maxW="250px" px="1rem">
-            <Box maxW="100%" h="100vh">
-              <Box>{brand}</Box>
-              <Stack direction="column" mb="40px">
-                <Box>{links}</Box>
-              </Stack>
-              <SidebarHelp />
-            </Box>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
-    </Flex>
+      <Flex display={{ sm: "flex", xl: "none" }} ref={mainPanel} alignItems="center">
+        <HamburgerIcon
+            color={hamburgerColor}
+            w="28px"
+            h="28px"
+            ref={btnRef}
+            onClick={onOpen}
+        />
+        <Drawer isOpen={isOpen} onClose={onClose} finalFocusRef={btnRef}>
+          <DrawerOverlay />
+          <DrawerContent
+              w="250px"
+              maxW="250px"
+              ms={{ sm: "16px" }}
+              my={{ sm: "16px" }}
+              borderRadius="16px"
+              bg={SIDEBAR_STYLES.sidebarBackgroundColor}
+          >
+            <DrawerCloseButton _focus={{ boxShadow: "none" }} _hover={{ boxShadow: "none" }} />
+            <DrawerBody maxW="250px" px="1rem">
+              <Box maxW="100%" h="100vh">
+                <Box><Brand logo={logo} pt="35px" /></Box>
+                <Stack direction="column" mb="40px">
+                  <Box>{links}</Box>
+                </Stack>
+                <SidebarHelp />
+              </Box>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </Flex>
   );
 };
 
