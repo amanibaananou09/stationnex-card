@@ -1,5 +1,5 @@
 import api from "./axios";
-import { GeneralUser, User } from "../model";
+import {GeneralUser} from "../model";
 
 const API_URL = "/user";
 
