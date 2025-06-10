@@ -2,5 +2,5 @@ projectKey=stationnex-card
 serverUrl=http://localhost:9000
 serverVersion=25.3.0.104237
 dashboardUrl=http://localhost:9000/dashboard?id=stationnex-card
-ceTaskId=b042930b-885f-4cdb-adb2-ef50e4159188
-ceTaskUrl=http://localhost:9000/api/ce/task?id=b042930b-885f-4cdb-adb2-ef50e4159188
+ceTaskId=f402ca12-0074-40aa-b2a1-12874768ae72
+ceTaskUrl=http://localhost:9000/api/ce/task?id=f402ca12-0074-40aa-b2a1-12874768ae72
