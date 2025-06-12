@@ -58,20 +58,6 @@ export const formatNumbeer = (value: number | null | undefined): number | null =
   return parseFloat(value.toFixed(2));
 };
 
-export const getColorForTankLevel = (level: number): string => {
-  if (level >= 90) {
-    return "#07C100";
-  } else if (level >= 60) {
-    return "#1FC32F";
-  } else if (level >= 50) {
-    return "#EAA817";
-  } else if (level >= 30) {
-    return "#EA8B17";
-  } else {
-    return "#E02200";
-  }
-};
-
 export const truncateText = (text: string, limit: number) => {
   if (text.length <= limit) {
     return text;

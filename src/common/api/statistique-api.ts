@@ -18,20 +18,6 @@ export const getLastTankDelivery = async (station: Station, tank: number) => {
   return response.data;
 };
 
-export const getAllSalesByGrades = async (
-  station: Station,
-  startDate?: string,
-  endDate?: string,
-): Promise<Grades[]> => {
-  let url = `${API_URL}/sales/fuelName/${station.controllerPts.id}?`;
-
-  url = addFilterParams(url, startDate, endDate);
-
-  const response = await api.get(url);
-
-  return response.data;
-};
-
 export const getAllSalesByPump = async (
   station: Station,
   startDate?: string,
