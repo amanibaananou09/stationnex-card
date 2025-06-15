@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1749742483393" clover="3.2.0">
-  <project timestamp="1749742483393" name="All files">
-    <metrics statements="1367" coveredstatements="236" conditionals="645" coveredconditionals="65" methods="392" coveredmethods="56" elements="2404" coveredelements="357" complexity="0" loc="1367" ncloc="1367" packages="40" files="110" classes="110"/>
+<coverage generated="1749995790209" clover="3.2.0">
+  <project timestamp="1749995790209" name="All files">
+    <metrics statements="1350" coveredstatements="267" conditionals="645" coveredconditionals="78" methods="388" coveredmethods="66" elements="2383" coveredelements="411" complexity="0" loc="1350" ncloc="1350" packages="40" files="109" classes="109"/>
     <package name="src">
       <metrics statements="5" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="i18n.ts" path="C:\Projet\ESS\stationnex-card\src\i18n.ts">
@@ -36,7 +36,7 @@
       </file>
     </package>
     <package name="src.common.api">
-      <metrics statements="108" coveredstatements="73" conditionals="33" coveredconditionals="23" methods="23" coveredmethods="13"/>
+      <metrics statements="91" coveredstatements="89" conditionals="33" coveredconditionals="31" methods="19" coveredmethods="18"/>
       <file name="WebSocketTopics.ts" path="C:\Projet\ESS\stationnex-card\src\common\api\WebSocketTopics.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -67,8 +67,8 @@
       </file>
       <file name="axios.ts" path="C:\Projet\ESS\stationnex-card\src\common\api\axios.ts">
         <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
-        <line num="4" count="4" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
         <line num="12" count="12" type="stmt"/>
         <line num="13" count="12" type="cond" truecount="1" falsecount="1"/>
         <line num="14" count="0" type="stmt"/>
@@ -128,55 +128,35 @@
         <line num="36" count="2" type="stmt"/>
       </file>
       <file name="configuration-api.ts" path="C:\Projet\ESS\stationnex-card\src\common\api\configuration-api.ts">
-        <metrics statements="3" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
+        <metrics statements="3" coveredstatements="3" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
       </file>
       <file name="forgot-password-api.ts" path="C:\Projet\ESS\stationnex-card\src\common\api\forgot-password-api.ts">
-        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
       </file>
       <file name="product-api.ts" path="C:\Projet\ESS\stationnex-card\src\common\api\product-api.ts">
-        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
       </file>
       <file name="sale-point-api.ts" path="C:\Projet\ESS\stationnex-card\src\common\api\sale-point-api.ts">
-        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-      </file>
-      <file name="statistique-api.ts" path="C:\Projet\ESS\stationnex-card\src\common\api\statistique-api.ts">
-        <metrics statements="17" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.components">
@@ -855,33 +835,33 @@
       </file>
     </package>
     <package name="src.components.Skeleton">
-      <metrics statements="24" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="10" coveredmethods="0"/>
+      <metrics statements="24" coveredstatements="15" conditionals="6" coveredconditionals="5" methods="10" coveredmethods="5"/>
       <file name="Skeletons.tsx" path="C:\Projet\ESS\stationnex-card\src\components\Skeleton\Skeletons.tsx">
-        <metrics statements="24" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="10" coveredmethods="0"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <metrics statements="24" coveredstatements="15" conditionals="6" coveredconditionals="5" methods="10" coveredmethods="5"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="9" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
-        <line num="104" count="0" type="stmt"/>
+        <line num="104" count="1" type="stmt"/>
         <line num="105" count="0" type="stmt"/>
         <line num="106" count="0" type="stmt"/>
-        <line num="127" count="0" type="stmt"/>
-        <line num="132" count="0" type="stmt"/>
-        <line num="133" count="0" type="stmt"/>
-        <line num="160" count="0" type="stmt"/>
-        <line num="165" count="0" type="stmt"/>
-        <line num="171" count="0" type="stmt"/>
-        <line num="177" count="0" type="stmt"/>
-        <line num="178" count="0" type="stmt"/>
+        <line num="127" count="1" type="stmt"/>
+        <line num="132" count="2" type="stmt"/>
+        <line num="133" count="2" type="stmt"/>
+        <line num="160" count="1" type="stmt"/>
+        <line num="165" count="1" type="stmt"/>
+        <line num="171" count="5" type="stmt"/>
+        <line num="177" count="1" type="stmt"/>
+        <line num="178" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.UI.Form">
@@ -1507,24 +1487,24 @@
       <metrics statements="40" coveredstatements="8" conditionals="30" coveredconditionals="1" methods="10" coveredmethods="1"/>
       <file name="utils.ts" path="C:\Projet\ESS\stationnex-card\src\utils\utils.ts">
         <metrics statements="40" coveredstatements="8" conditionals="30" coveredconditionals="1" methods="10" coveredmethods="1"/>
-        <line num="4" count="4" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
         <line num="5" count="12" type="cond" truecount="1" falsecount="1"/>
         <line num="6" count="12" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
-        <line num="39" count="4" type="stmt"/>
+        <line num="39" count="8" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
-        <line num="50" count="4" type="stmt"/>
+        <line num="50" count="8" type="stmt"/>
         <line num="51" count="0" type="stmt"/>
-        <line num="56" count="4" type="stmt"/>
+        <line num="56" count="8" type="stmt"/>
         <line num="57" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="58" count="0" type="stmt"/>
-        <line num="61" count="4" type="stmt"/>
+        <line num="61" count="8" type="stmt"/>
         <line num="62" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="63" count="0" type="stmt"/>
         <line num="65" count="0" type="stmt"/>
-        <line num="69" count="4" type="stmt"/>
+        <line num="69" count="8" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
         <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="74" count="0" type="stmt"/>
