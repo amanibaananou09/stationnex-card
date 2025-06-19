@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1750261061181" clover="3.2.0">
-  <project timestamp="1750261061181" name="All files">
-    <metrics statements="1350" coveredstatements="403" conditionals="645" coveredconditionals="151" methods="388" coveredmethods="108" elements="2383" coveredelements="662" complexity="0" loc="1350" ncloc="1350" packages="40" files="109" classes="109"/>
+<coverage generated="1750325093877" clover="3.2.0">
+  <project timestamp="1750325093877" name="All files">
+    <metrics statements="1350" coveredstatements="425" conditionals="645" coveredconditionals="168" methods="388" coveredmethods="116" elements="2383" coveredelements="709" complexity="0" loc="1350" ncloc="1350" packages="40" files="109" classes="109"/>
     <package name="src">
       <metrics statements="5" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="i18n.ts" path="C:\Projet\ESS\stationnex-card\src\i18n.ts">
@@ -313,31 +313,31 @@
       </file>
     </package>
     <package name="src.components.Dialog">
-      <metrics statements="36" coveredstatements="0" conditionals="28" coveredconditionals="0" methods="14" coveredmethods="0"/>
+      <metrics statements="36" coveredstatements="22" conditionals="28" coveredconditionals="17" methods="14" coveredmethods="8"/>
       <file name="ConfirmationDialog.tsx" path="C:\Projet\ESS\stationnex-card\src\components\Dialog\ConfirmationDialog.tsx">
-        <metrics statements="22" coveredstatements="0" conditionals="18" coveredconditionals="0" methods="8" coveredmethods="0"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="52" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
+        <metrics statements="22" coveredstatements="22" conditionals="18" coveredconditionals="17" methods="8" coveredmethods="8"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="21" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="21" type="stmt"/>
+        <line num="26" count="21" type="stmt"/>
+        <line num="27" count="21" type="stmt"/>
+        <line num="34" count="21" type="stmt"/>
+        <line num="35" count="21" type="stmt"/>
+        <line num="37" count="21" type="stmt"/>
+        <line num="38" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="44" count="21" type="stmt"/>
+        <line num="45" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="51" count="21" type="stmt"/>
+        <line num="52" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="60" count="7" type="stmt"/>
+        <line num="63" count="21" type="stmt"/>
+        <line num="64" count="7" type="stmt"/>
+        <line num="85" count="21" type="stmt"/>
       </file>
       <file name="ErrorDialog.tsx" path="C:\Projet\ESS\stationnex-card\src\components\Dialog\ErrorDialog.tsx">
         <metrics statements="14" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="6" coveredmethods="0"/>
