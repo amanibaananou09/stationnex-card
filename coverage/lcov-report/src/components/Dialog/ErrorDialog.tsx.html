@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">94.11% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>16/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>9/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -143,34 +143,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,7 +185,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button } from "@chakra-ui/button";
 import {
@@ -206,32 +206,32 @@ interface DialogConfig {
   message?: string;
 }
 &nbsp;
-export const useError = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops?: DialogConfig) =&gt; {</span>
-  const { t } = <span class="cstat-no" title="statement not covered" >useTranslation();</span>
+export const useError = (props?: DialogConfig) =&gt; {
+  const { t } = useTranslation();
 &nbsp;
-  const { title, message } = <span class="cstat-no" title="statement not covered" >props || {};</span>
+  const { title, message } = props || {};
 &nbsp;
-  const [isOpen, setOpen] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
-  const [config, setConfig] = <span class="cstat-no" title="statement not covered" >useState&lt;DialogConfig&gt;({</span>
+  const [isOpen, setOpen] = useState(false);
+  const [config, setConfig] = useState&lt;DialogConfig&gt;({
     title,
     message,
   });
 &nbsp;
-  const toggle = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setOpen(!isOpen);</span></span>
-  const close = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setOpen(false);</span></span>
+  const toggle = () =&gt; setOpen(!isOpen);
+  const close = <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setOpen(false);</span>
 &nbsp;
-  const openDialog = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(c</span>onf?: DialogConfig) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (conf) {</span>
-<span class="cstat-no" title="statement not covered" >      setConfig(<span class="fstat-no" title="function not covered" >(p</span>rev) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+  const openDialog = (conf?: DialogConfig) =&gt; {
+    if (conf) {
+      setConfig((prev) =&gt; ({
         title: conf?.title ?? prev.title,
-        message: conf?.message ?? prev.message,
+        message: conf?.message ?? <span class="branch-1 cbranch-no" title="branch not covered" >prev.message,</span>
       }));
     }
-<span class="cstat-no" title="statement not covered" >    toggle();</span>
+    toggle();
   };
 &nbsp;
-  const ErrorDialog = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> children }: { children?: React.ReactNode }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return (</span>
+  const ErrorDialog = ({ children }: { children?: React.ReactNode }) =&gt; {
+    return (
       &lt;Modal isOpen={isOpen} onClose={toggle} closeOnOverlayClick={false}&gt;
         &lt;ModalOverlay /&gt;
         &lt;ModalContent&gt;
@@ -250,7 +250,7 @@ export const useError = <span class="cstat-no" title="statement not covered" ><s
     );
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return { ErrorDialog, showError: openDialog, close };</span>
+  return { ErrorDialog, showError: openDialog, close };
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -259,7 +259,7 @@ export const useError = <span class="cstat-no" title="statement not covered" ><s
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-19T09:24:53.538Z
+                at 2025-06-22T12:58:48.288Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
