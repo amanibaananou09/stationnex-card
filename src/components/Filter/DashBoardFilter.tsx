@@ -18,7 +18,7 @@ interface FilterPeriodProps {
   onSearch: (fromDate: string, toDate: string) => void;
 }
 
-const getDefaultDates = (filter: string) => {
+export const getDefaultDates = (filter: string) => {
   let fromDate: moment.Moment;
   let toDate: moment.Moment;
 
