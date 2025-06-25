@@ -3,6 +3,15 @@ image: node:18.14.2
 definitions:
   caches:
     sonar: ~/.sonar
+  services:
+    custom-docker:
+      image:
+        name: docker.teknoword.com/dind
+        username: $REPOSITORY_USERNAME
+        password: $REPOSITORY_PASSWORD
+      type: docker
+      variables:
+        INSECURE_REGISTRY: 192.168.1.65:8082
   steps:
     - step: &install-dependencies
         name: Install dependencies
@@ -58,7 +67,9 @@ definitions:
         caches:
           - docker
         services:
-          - docker
+          - custom-docker
+        artifacts:
+          download: true
         script:
           - docker login ${DOCKER_REGISTRY_URL} --username=${REPOSITORY_USERNAME} --password=${REPOSITORY_PASSWORD}
           - docker build -f ./deployments/Dockerfile -t ${DOCKER_REGISTRY_URL}/${PROJECT_NAME}:${BITBUCKET_BRANCH-${BITBUCKET_TAG}} .
